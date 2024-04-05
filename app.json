@@ -23,6 +23,14 @@
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./src/assets/fonts/Pretendard-Black.otf"]
+        }
+      ]
+    ]
   }
 }
