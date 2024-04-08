@@ -1,19 +1,38 @@
+import { colors } from '@/libs/Colors'
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 
 interface TextButtonProps {
-  size?: number
   text: string
-  radius?: number
   disabled?: boolean
-  onClick: () => void
+  onPress?: () => void
 }
 
-export default function TextButton() {
+export default function TextButton({
+  text,
+  disabled,
+  onPress,
+}: TextButtonProps) {
   return (
-    <TouchableOpacity>
-      <Text></Text>
-    </TouchableOpacity>
+    <Button disabled={disabled} onPress={onPress}>
+      <ButtonText disabled={disabled}>{text}</ButtonText>
+    </Button>
   )
 }
+
+const Button = styled(TouchableOpacity)`
+  border-radius: 12px;
+  background-color: ${(props: { disabled: boolean }) =>
+    props.disabled ? colors.grey3 : colors.main1};
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+`
+const ButtonText = styled.Text<{ disabled: boolean }>`
+  color: ${(props: { disabled: boolean }) =>
+    props.disabled ? colors.black : colors.white};
+  font-family: 'SemiBold';
+  font-size: 17px;
+`
