@@ -12,13 +12,14 @@ import MyPageTabIcon from '@/assets/images/SVGs/bottomTab/Tab_MyPage.svg'
 import MyRoutineTabIcon from '@/assets/images/SVGs/bottomTab/Tab_MyRoutine.svg'
 import DictionaryTabIcon from '@/assets/images/SVGs/bottomTab/Tab_Dictionary.svg'
 import { useAtom } from 'jotai'
-import { isDarkModeAtom } from '@/states/GlobalStates'
+import { isDarkModeAtom, isTabVisibleAtom } from '@/states/GlobalStates'
 import { Platform } from 'react-native'
 
 const Tabs = createBottomTabNavigator()
 
 export default function BottomTabNav() {
   const [isDark] = useAtom(isDarkModeAtom)
+  const [isTabVisible] = useAtom(isTabVisibleAtom)
 
   return (
     <Tabs.Navigator
@@ -27,6 +28,7 @@ export default function BottomTabNav() {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
+          display: isTabVisible ? 'flex' : 'none',
           height: 88,
           backgroundColor: isDark ? colors.grey9 : colors.white,
           borderTopColor: colors.grey2,
