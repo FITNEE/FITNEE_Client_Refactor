@@ -50,7 +50,7 @@ export default function BottomTabNav() {
                 width={24}
                 height={24}
               />
-              <TabText style={{ color: focused ? colors.main1 : colors.grey5 }}>
+              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>
                 홈
               </TabText>
             </TabWrapper>
@@ -68,7 +68,7 @@ export default function BottomTabNav() {
                 width={24}
                 height={24}
               />
-              <TabText style={{ color: focused ? colors.main1 : colors.grey5 }}>
+              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>
                 마이루틴
               </TabText>
             </TabWrapper>
@@ -86,7 +86,7 @@ export default function BottomTabNav() {
                 width={24}
                 height={24}
               />
-              <TabText style={{ color: focused ? colors.main1 : colors.grey5 }}>
+              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>
                 운동하기
               </TabText>
             </TabWrapper>
@@ -104,7 +104,7 @@ export default function BottomTabNav() {
                 width={24}
                 height={24}
               />
-              <TabText style={{ color: focused ? colors.main1 : colors.grey5 }}>
+              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>
                 운동사전
               </TabText>
             </TabWrapper>
@@ -122,7 +122,7 @@ export default function BottomTabNav() {
                 width={24}
                 height={24}
               />
-              <TabText style={{ color: focused ? colors.main1 : colors.grey5 }}>
+              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>
                 MY
               </TabText>
             </TabWrapper>
@@ -139,4 +139,7 @@ const TabWrapper = styled.View`
   align-items: center;
   padding-top: 10px;
 `
-const TabText = styled.Text``
+const TabText = styled.Text`
+  font-family: 'Medium';
+  font-size: 10px;
+`
