@@ -7,7 +7,12 @@ const Stack = createStackNavigator()
 
 export default function DictionaryNav() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerBackTitleVisible: false,
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name="DictionaryMain" component={Dictionary} />
     </Stack.Navigator>
   )
