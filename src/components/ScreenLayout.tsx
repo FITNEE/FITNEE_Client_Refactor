@@ -9,6 +9,17 @@ interface ScreenLayoutProps {
   children: React.ReactNode
 }
 
+/**
+ * ScreenLayout 은 화면에 SafeAreaView & StatusBar을 설정하기 위해 개발된 컴포넌트입니다
+ * @props children - 화면에 넣을 ReactNode
+ * @example
+ * <ScreenLayout>
+ *  <View>
+ *    <Text>hello</Text>
+ *  </View>
+ * </ScreenLayout>
+ */
+
 export default function ScreenLayout({ children }: ScreenLayoutProps) {
   const [isDark] = useAtom(isDarkModeAtom)
 
