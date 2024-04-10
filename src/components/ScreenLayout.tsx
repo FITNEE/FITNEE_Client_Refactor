@@ -24,14 +24,16 @@ export default function ScreenLayout({ children }: ScreenLayoutProps) {
   const [isDark] = useAtom(isDarkModeAtom)
 
   return (
-    <ScreenContainer>
+    <ScreenContainer isDark={isDark}>
       <StatusBar backgroundColor={isDark ? colors.black : colors.white} />
       {children}
     </ScreenContainer>
   )
 }
 
-export const ScreenContainer = styled.SafeAreaView`
+export const ScreenContainer = styled.SafeAreaView<{ isDark: boolean }>`
   flex: 1;
   width: 100%;
+  background-color: ${(props: { isDark: boolean }) =>
+    props.isDark ? colors.black : colors.white};
 `
