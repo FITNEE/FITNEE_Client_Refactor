@@ -9,6 +9,15 @@ interface TextButtonProps {
   onPress?: () => void
 }
 
+/**
+ * TextButton 은 주로 화면 하단에 사용되는 Text 가 포함된 Button 입니다
+ * @props text - 버튼Text
+ * @props disabled - 버튼이 disabled 되는 기준
+ * @props onPress - 버튼이 클릭되었을 때 실행될 함수
+ * @example
+ * <TextButton text='운동하러 가기' disabled={true} onPress={()=>navigation.nativate('/Home')}>
+ */
+
 export default function TextButton({
   text,
   disabled,
