@@ -20,8 +20,8 @@ export default function KeywordList({
     <Container style={{ ...style }}>
       <Title>{title}</Title>
       <KeywordContainer>
-        {keywords.map((keyword) => (
-          <KeywordWrapper onPress={() => onPressKeyword(keyword)}>
+        {keywords.map((keyword, i) => (
+          <KeywordWrapper key={i} onPress={() => onPressKeyword(keyword)}>
             <KeywordText>{keyword}</KeywordText>
           </KeywordWrapper>
         ))}
