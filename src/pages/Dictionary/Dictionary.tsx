@@ -3,12 +3,13 @@ import AutoCompleteList from '@/components/dictionary/AutoCompleteList'
 import KeywordList from '@/components/dictionary/KeywordList'
 import SearchBar from '@/components/dictionary/SearchBar'
 import { colors } from '@/libs/Colors'
-import React, { useState } from 'react'
+import { SearchTextAtom } from '@/states/DictionaryStates'
+import { useAtom } from 'jotai'
 import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
 import styled from 'styled-components/native'
 
 export default function Dictionary() {
-  const [searchText, setSearchText] = useState<string>('')
+  const [searchText, setSearchText] = useAtom(SearchTextAtom)
 
   return (
     <ScreenLayout>
