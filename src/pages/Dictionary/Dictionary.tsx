@@ -1,4 +1,5 @@
 import ScreenLayout from '@/components/ScreenLayout'
+import AutoCompleteList from '@/components/dictionary/AutoCompleteList'
 import KeywordList from '@/components/dictionary/KeywordList'
 import SearchBar from '@/components/dictionary/SearchBar'
 import { colors } from '@/libs/Colors'
@@ -12,7 +13,7 @@ export default function Dictionary() {
   return (
     <ScreenLayout>
       <SearchBar text={searchText} setText={setSearchText} />
-      {searchText.length === 0 && (
+      {searchText.length === 0 ? (
         <>
           <Divider />
           <KeywordList
@@ -26,6 +27,11 @@ export default function Dictionary() {
             style={{ marginTop: 56 }}
           />
         </>
+      ) : (
+        <AutoCompleteList
+          keyword={searchText}
+          list={['데드리프트', '이사이드 레터럴 사이즈']}
+        />
       )}
     </ScreenLayout>
   )
