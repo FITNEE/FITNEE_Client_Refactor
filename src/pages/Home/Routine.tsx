@@ -2,7 +2,7 @@ import Cards from "@/components/home/Cards";
 import { colors } from "@/libs/Colors";
 import { isDarkModeAtom } from "@/states/GlobalStates";
 import { useAtom } from "jotai";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import styled from "styled-components/native";
 
 export default function Routine() {
