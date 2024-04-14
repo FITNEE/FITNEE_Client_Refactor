@@ -2,8 +2,8 @@ import Cards from "@/components/home/Cards";
 import { colors } from "@/libs/Colors";
 import { isDarkModeAtom } from "@/states/GlobalStates";
 import { useAtom } from "jotai";
-import { View } from "react-native";
 import styled from "styled-components/native";
+import { View } from "react-native";
 import { Dimensions } from "react-native";
 
 export const ScreenWidth = Dimensions.get("screen").width;
