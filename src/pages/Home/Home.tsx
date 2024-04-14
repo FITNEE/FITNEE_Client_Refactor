@@ -18,7 +18,7 @@ export default function Home() {
           color={isDark ? colors.white : colors.black}
         />
       </LogoWrapper>
-      {false ? <Routine /> : <EmptyRoutine />}
+      {true ? <Routine /> : <EmptyRoutine />}
     </ScreenLayout>
   );
 }

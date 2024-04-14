@@ -1,9 +1,10 @@
 import styled from "styled-components/native";
 import React from "react";
-import { StatusBar } from "expo-status-bar";
+// import { StatusBar } from "expo-status-bar";
 import { useAtom } from "jotai";
 import { isDarkModeAtom } from "@/states/GlobalStates";
 import { colors } from "@/libs/Colors";
+import { Platform, StatusBar } from "react-native";
 
 interface ScreenLayoutProps {
   children: React.ReactNode;
@@ -25,13 +26,17 @@ export default function ScreenLayout({ children }: ScreenLayoutProps) {
 
   return (
     <ScreenContainer isDark={isDark}>
-      <StatusBar backgroundColor={isDark ? colors.black : colors.grey1} />
+      <StatusBar
+        backgroundColor={isDark ? colors.black : colors.grey1}
+        barStyle={isDark ? "light-content" : "dark-content"}
+      />
       {children}
     </ScreenContainer>
   );
 }
 
 export const ScreenContainer = styled.SafeAreaView<{ isDark: boolean }>`
+  padding-top: ${Platform.OS === "android" ? StatusBar.currentHeight : 0}px;
   flex: 1;
   width: 100%;
   background-color: ${(props: { isDark: boolean }) =>
