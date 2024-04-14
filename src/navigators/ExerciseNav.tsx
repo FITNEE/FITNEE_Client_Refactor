@@ -1,14 +1,19 @@
-import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import Home from '@/pages/home/Home'
-import Exercise from '@/pages/exercise/Exercise'
+import Home from '@/pages/Home/Home'
+import Exercise from '@/pages/Exercise/StartExercise'
+import StartExercise from '@/pages/Exercise/StartExercise'
 
 const Stack = createStackNavigator()
 
 export default function ExerciseNav() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="ExerciseMain" component={Exercise} />
+    <Stack.Navigator
+      screenOptions={{
+        headerBackTitleVisible: false,
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="ExerciseMain" component={StartExercise} />
     </Stack.Navigator>
   )
 }
