@@ -4,6 +4,9 @@ import { isDarkModeAtom } from "@/states/GlobalStates";
 import { useAtom } from "jotai";
 import { View } from "react-native";
 import styled from "styled-components/native";
+import { Dimensions } from "react-native";
+
+export const ScreenWidth = Dimensions.get("screen").width;
 
 export default function Routine() {
   const [isDark] = useAtom(isDarkModeAtom);
@@ -28,6 +31,11 @@ export default function Routine() {
         </Section>
       </SectionBlock>
       <Cards />
+      {true ? (
+        <Button isDark={isDark}>
+          <ButtonText isDark={isDark}>운동하러 가기</ButtonText>
+        </Button>
+      ) : null}
     </View>
   );
 }
@@ -102,4 +110,22 @@ const NumText = styled.Text`
   font-size: 15px;
   font-family: "Regular";
   line-height: 22.5px;
+`;
+const Button = styled.TouchableOpacity`
+  margin-bottom: 8px;
+  border-radius: 12px;
+  align-items: center;
+  width: ${ScreenWidth - 48}px;
+  align-self: center;
+  justify-content: center;
+  max-width: 480px;
+  height: 52px;
+  background-color: ${colors.main1};
+`;
+const ButtonText = styled.Text<{ isDark: boolean }>`
+  font-size: 17px;
+  font-family: "SemiBold";
+  line-height: 25.5px;
+  color: ${(props: { isDark: boolean }) =>
+    props.isDark ? colors.black : colors.white};
 `;

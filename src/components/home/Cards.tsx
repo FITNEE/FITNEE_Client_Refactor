@@ -25,7 +25,7 @@ export default function Cards() {
             <Card isDark={isDark} key={i}>
               <ExerciseView
                 isDark={isDark}
-                source={"@/assets/images/PNGs/ExerciseThumb/1.png"}
+                source={require("@/assets/images/PNGs/ExerciseThumb/1.png")}
               />
               <ExerciseName isDark={isDark}>{item.name}</ExerciseName>
             </Card>
@@ -39,7 +39,6 @@ export default function Cards() {
 const Container = styled.ScrollView`
   margin-top: 22px;
   width: 100%;
-  /* padding: 0px 16px; */
   margin-bottom: 76px;
 `;
 const Wrapper = styled.View`
