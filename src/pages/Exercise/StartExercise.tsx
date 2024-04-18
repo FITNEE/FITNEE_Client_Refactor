@@ -32,7 +32,7 @@ export default function StartExercise({ navigation }) {
     totalSets: number
   }
 
-  const goToExercise = () => navigation.navigate('Exercise')
+  const goToExercise = () => navigation.navigate('ExerciseMain')
 
   const exerciseList = ExerciseData.ExerciseDataList.map((result) => (
     <RecTextLine key={result.healthCategoryIdx}>
