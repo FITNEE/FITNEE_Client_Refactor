@@ -8,7 +8,7 @@ import { useAtom } from 'jotai'
 import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
 import styled from 'styled-components/native'
 
-export default function Dictionary() {
+export default function DictionaryMain() {
   const [searchText, setSearchText] = useAtom(SearchTextAtom)
 
   return (

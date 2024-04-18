@@ -6,7 +6,7 @@ import { SearchTextAtom } from '@/states/DictionaryStates'
 import { useAtom } from 'jotai'
 import styled from 'styled-components/native'
 
-export default function Search() {
+export default function DictionarySearch() {
   const [searchText, setSearchText] = useAtom(SearchTextAtom)
   return (
     <ScreenLayout>
