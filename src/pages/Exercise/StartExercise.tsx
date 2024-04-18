@@ -8,8 +8,9 @@ import { ScrollView } from 'react-native-gesture-handler'
 import ExerciseData from '@/assets/datas/ExerciseData.json'
 import ProgressCircle from '@/components/Exercise/ProgressCircle'
 import BlankCircle from '@/components/Exercise/BlankCircle'
+import LeftArrow from '@/assets/images/SVGs/icon/Left.svg'
 
-export default function StartExercise() {
+export default function StartExercise({ navigation }) {
   const [isDark, setIsDark] = useState<boolean>(false)
   const isFocused = useIsFocused()
 
@@ -31,6 +32,8 @@ export default function StartExercise() {
     totalSets: number
   }
 
+  const goToExercise = () => navigation.navigate('Exercise')
+
   const exerciseList = ExerciseData.ExerciseDataList.map((result) => (
     <RecTextLine key={result.healthCategoryIdx}>
       <RecText1 isDark={isDark}>{result.exerciseName}</RecText1>
@@ -47,9 +50,9 @@ export default function StartExercise() {
       }}
     >
       <Container isDark={isDark}>
-        {/* <BackIcon onPress={() => navigation.goBack()}> */}
-        {/* <Left width={24} height={24} color={isDark ? colors.white : colors.black} /> */}
-        {/* </BackIcon> */}
+        <BackIcon onPress={() => navigation.goBack()}>
+          <LeftArrow width={24} height={24} color={isDark ? colors.white : colors.black} />
+        </BackIcon>
         <ExerciseText isDark={isDark}>운동을 시작해 볼까요?</ExerciseText>
         <ExerciseExplainText isDark={isDark}> </ExerciseExplainText>
 
@@ -75,7 +78,7 @@ export default function StartExercise() {
           <ScrollView showsVerticalScrollIndicator={false}>{exerciseList}</ScrollView>
         </ExerciseRec>
 
-        <ExerciseButton isDark={isDark}>
+        <ExerciseButton isDark={isDark} onPress={goToExercise}>
           <ExerciseButtonText isDark={isDark}>시작</ExerciseButtonText>
         </ExerciseButton>
       </Container>

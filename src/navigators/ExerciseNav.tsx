@@ -13,7 +13,8 @@ export default function ExerciseNav() {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="ExerciseMain" component={StartExercise} />
+      <Stack.Screen name="StartExercise" component={StartExercise} />
+      <Stack.Screen name="Exercise" component={Exercise} />
     </Stack.Navigator>
   )
 }
