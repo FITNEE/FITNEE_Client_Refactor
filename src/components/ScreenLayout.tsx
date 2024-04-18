@@ -7,6 +7,8 @@ import { colors } from '@/libs/Colors'
 
 interface ScreenLayoutProps {
   children: React.ReactNode
+  lightBack?: string
+  darkBack?: string
 }
 
 /**
@@ -20,20 +22,22 @@ interface ScreenLayoutProps {
  * </ScreenLayout>
  */
 
-export default function ScreenLayout({ children }: ScreenLayoutProps) {
+export default function ScreenLayout({
+  children,
+  lightBack = colors.white,
+  darkBack = colors.black,
+}: ScreenLayoutProps) {
   const [isDark] = useAtom(isDarkModeAtom)
 
   return (
-    <ScreenContainer isDark={isDark}>
+    <ScreenContainer style={{ backgroundColor: isDark ? darkBack : lightBack }}>
       <StatusBar backgroundColor={isDark ? colors.black : colors.white} />
       {children}
     </ScreenContainer>
   )
 }
 
-export const ScreenContainer = styled.SafeAreaView<{ isDark: boolean }>`
+export const ScreenContainer = styled.SafeAreaView`
   flex: 1;
   width: 100%;
-  background-color: ${(props: { isDark: boolean }) =>
-    props.isDark ? colors.black : colors.white};
 `
