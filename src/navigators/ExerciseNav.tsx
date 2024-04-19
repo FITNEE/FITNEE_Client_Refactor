@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from '@/pages/Home/Home'
 import ExerciseMain from '@/pages/Exercise/ExerciseMain'
 import StartExercise from '@/pages/Exercise/StartExercise'
+import ExerciseCourse from '@/pages/Exercise/ExerciseCourse'
 
 const Stack = createStackNavigator()
 
@@ -15,6 +16,7 @@ export default function ExerciseNav() {
     >
       <Stack.Screen name="StartExercise" component={StartExercise} />
       <Stack.Screen name="ExerciseMain" component={ExerciseMain} />
+      <Stack.Screen name="ExerciseCourse" component={ExerciseCourse} />
     </Stack.Navigator>
   )
 }

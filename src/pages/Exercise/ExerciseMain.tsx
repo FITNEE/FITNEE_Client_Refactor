@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import { useIsFocused, useRoute, StackActions } from '@react-navigation/native'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Alert, SafeAreaView, TextInput, Dimensions, Animated, StyleSheet } from 'react-native'
@@ -14,6 +13,7 @@ const { width, height } = Dimensions.get('window')
 export default function ExerciseMain({ navigation }: any) {
   const [isDark, setIsDark] = useState<boolean>(false)
   const isFocused = useIsFocused()
+  const goToCourse = () => navigation.navigate('ExerciseCourse')
 
   //bottom-sheet용
   const snapPoints = useMemo(() => ['70%'], [])
@@ -65,6 +65,7 @@ export default function ExerciseMain({ navigation }: any) {
             text="운동 시작"
             disabled={false}
             // onPress={animation}
+            onPress={goToCourse}
             isDark={isDark}
           />
           <SkipExercrise>
