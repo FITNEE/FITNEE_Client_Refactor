@@ -7,11 +7,21 @@ import styled from 'styled-components/native'
 import { colors } from '@/libs/Colors'
 import ExerciseCard from '@/components/Exercise/ExerciseCard'
 import ExerciseButton from '@/components/Exercise/ExerciseButton'
+import CurrentSet from '@/components/Exercise/CurrentSet'
+import { getGIF } from '@/utils/getImage'
 const { width, height } = Dimensions.get('window')
 
-export default function ExerciseMain({ navigation }) {
+export default function ExerciseMain({ navigation }: any) {
   const [isDark, setIsDark] = useState<boolean>(false)
   const isFocused = useIsFocused()
+
+  //bottom-sheet용
+  const snapPoints = useMemo(() => ['70%'], [])
+  const bottomSheetRef = useRef(null)
+  const renderBackdrop = useCallback(
+    (props: any) => <BottomSheetBackdrop {...props} disappearsOnIndex={-1} appearsOnIndex={0} pressBehavior="close" />,
+    [],
+  )
 
   return (
     <BottomSheetModalProvider>
@@ -35,29 +45,21 @@ export default function ExerciseMain({ navigation }) {
         style={{
           flex: 1,
           backgroundColor: isDark ? colors.grey9 : colors.grey2,
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <ExerciseCard exerciseName="사이드 레터럴 레이즈" isDark={isDark}>
-          {/* <ExerciseImage source={getImage[dataList[listIndex].exerciseInfo.healthCategoryIdx]} resizeMode="contain" /> */}
-          {/* <ExerciseContainer>
+          <ExerciseImage source={getGIF[11]} resizeMode="contain" />
+          <ExerciseContainer>
             <ReplaceButton isDark={isDark} disabled={false}>
               <ReplaceButtonText isDark={isDark}>운동 대체하기</ReplaceButtonText>
-            </ReplaceButton> */}
-          {/* 
-            <CurrentSet
-              set={1}
-              kg={dataList[listIndex].sets[0].weight}
-              num={dataList[listIndex].sets[0].rep}
-              run={
-                dataList[listIndex].exerciseInfo.healthCategoryIdx === 24 ||
-                dataList[listIndex].exerciseInfo.healthCategoryIdx === 25
-                  ? true
-                  : false
-              }
-            /> */}
+            </ReplaceButton>
 
-          {/* <CurrentExplain isDark={isDark}>{}</CurrentExplain>
-          </ExerciseContainer> */}
+            <CurrentSet set={1} kg={0} num={0} run={false} />
+
+            <CurrentExplain isDark={isDark}>{}</CurrentExplain>
+          </ExerciseContainer>
 
           <ExerciseButton //운동 시작 버튼
             text="운동 시작"
@@ -65,27 +67,27 @@ export default function ExerciseMain({ navigation }) {
             // onPress={animation}
             isDark={isDark}
           />
-          {/* <SkipExercrise onPress={() => OpenConfirm2()}>
+          <SkipExercrise>
             <SkipExercriseText isDark={isDark}>이 운동 건너뛰기</SkipExercriseText>
-          </SkipExercrise> */}
-          {/* <BottomSheetModal
+          </SkipExercrise>
+          <BottomSheetModal
             ref={bottomSheetRef}
             index={0}
             snapPoints={snapPoints}
             backgroundStyle={{
               borderRadius: 20,
-              backgroundColor: isDark ? colors.grey_8 : colors.white,
+              backgroundColor: isDark ? colors.grey8 : colors.white,
             }}
             backdropComponent={renderBackdrop}
-          > */}
-          <ModalTitleView isDark={isDark}>
-            <ModalTitle isDark={isDark}>운동 대체하기</ModalTitle>
-            <ModalTitle2 isDark={isDark}>현재 운동과 유사한 효과의 운동을 추천해 드릴게요.</ModalTitle2>
-          </ModalTitleView>
-          <BottomSheetBack>
-            <SeperateLine isDark={isDark} />
+          >
+            <ModalTitleView isDark={isDark}>
+              <ModalTitle isDark={isDark}>운동 대체하기</ModalTitle>
+              <ModalTitle2 isDark={isDark}>현재 운동과 유사한 효과의 운동을 추천해 드릴게요.</ModalTitle2>
+            </ModalTitleView>
+            <BottomSheetBack>
+              <SeperateLine isDark={isDark} />
 
-            {/* {replaceList.map((item, healthCategoryIdx) => (
+              {/* {replaceList.map((item, healthCategoryIdx) => (
                 <ReplaceView isDark={isDark}>
                   <ReplaceView2 isDark={isDark}>
                     <ReplaceImage source={pngPath.path[item.healthCategoryIdx - 1]} isDark={isDark} />
@@ -106,8 +108,8 @@ export default function ExerciseMain({ navigation }) {
                   </ReplaceButton2>
                 </ReplaceView>
               ))} */}
-          </BottomSheetBack>
-          {/* </BottomSheetModal> */}
+            </BottomSheetBack>
+          </BottomSheetModal>
         </ExerciseCard>
       </SafeAreaView>
     </BottomSheetModalProvider>

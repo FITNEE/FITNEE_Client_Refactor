@@ -1,16 +1,17 @@
 import styled from 'styled-components/native'
 import { colors } from '@/libs/Colors'
+import { ReactNode } from 'react'
 
 interface ExerciseProps {
-  exercise_name: string
-  children: Element
+  exerciseName: string
+  children: ReactNode
   isDark: boolean
 }
 
-export default function ExerciseCard({ exercise_name, children, isDark }: ExerciseProps) {
+export default function ExerciseCard({ exerciseName, children, isDark }: ExerciseProps) {
   return (
     <Container isDark={isDark}>
-      <ExerciseName isDark={isDark}>{exercise_name}</ExerciseName>
+      <ExerciseName isDark={isDark}>{exerciseName}</ExerciseName>
       {children}
     </Container>
   )

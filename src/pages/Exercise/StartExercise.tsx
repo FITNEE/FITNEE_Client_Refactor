@@ -2,17 +2,24 @@ import { View, Text } from 'react-native'
 import styled from 'styled-components/native'
 import { colors } from '@/libs/Colors'
 import { SafeAreaView } from 'react-native'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useIsFocused, StackActions } from '@react-navigation/native'
 import { ScrollView } from 'react-native-gesture-handler'
 import ExerciseData from '@/assets/datas/ExerciseData.json'
 import ProgressCircle from '@/components/Exercise/ProgressCircle'
 import BlankCircle from '@/components/Exercise/BlankCircle'
 import LeftArrow from '@/assets/images/SVGs/icon/Left.svg'
+import { useAtom } from 'jotai'
+import { isTabVisibleAtom } from '@/states/GlobalStates'
 
-export default function StartExercise({ navigation }) {
+export default function StartExercise({ navigation }: any) {
   const [isDark, setIsDark] = useState<boolean>(false)
+  const [, setIsTabVisible] = useAtom(isTabVisibleAtom)
   const isFocused = useIsFocused()
+
+  useEffect(() => {
+    setIsTabVisible(false)
+  }, [isFocused, navigation, setIsTabVisible])
 
   const Week = new Array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat')
 
