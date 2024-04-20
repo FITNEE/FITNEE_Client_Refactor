@@ -1,11 +1,17 @@
-import { View, Text } from "react-native";
 import { colors } from "@/libs/Colors";
 import { isDarkModeAtom } from "@/states/GlobalStates";
 import { useAtom } from "jotai";
 import styled from "styled-components/native";
+import { useNavigation } from "@react-navigation/native";
+
+interface NavigationProps {
+  [propName: string]: any;
+}
 
 export default function EmptyRoutine() {
   const [isDark] = useAtom(isDarkModeAtom);
+  const navigation = useNavigation<NavigationProps>();
+  const goToCreateRoutine = () => navigation.navigate("CreateRoutine");
   return (
     <Container>
       <EmptyImage
@@ -18,7 +24,7 @@ export default function EmptyRoutine() {
           간단한 질문에 답변하여{"\n"}나만의 루틴을 만들어보세요!
         </SubText>
       </TitleBlock>
-      <Button>
+      <Button onPress={goToCreateRoutine}>
         <ButtonText isDark={isDark}>AI 루틴 생성하기</ButtonText>
       </Button>
     </Container>

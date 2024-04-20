@@ -37,6 +37,7 @@ export default function ScreenLayout({ children }: ScreenLayoutProps) {
 
 export const ScreenContainer = styled.SafeAreaView<{ isDark: boolean }>`
   padding-top: ${Platform.OS === "android" ? StatusBar.currentHeight : 0}px;
+  /* 안드로이드 상태바 높이만큼 패딩-탑 추가 */
   flex: 1;
   width: 100%;
   background-color: ${(props: { isDark: boolean }) =>
