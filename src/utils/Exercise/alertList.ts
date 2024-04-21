@@ -7,7 +7,7 @@ export const StopConfirm = (goToStart: Function) => {
     { text: '취소', onPress: () => console.log('Cancel Stop') },
     {
       text: '운동 중단하기',
-      onPress: () => goToStart,
+      onPress: () => goToStart(),
       style: 'destructive',
     },
   ])
@@ -16,10 +16,10 @@ export const StopConfirm = (goToStart: Function) => {
 //운동스킵 경고 alert 함수
 export const SkipConfirm = (goToNext: Function) => {
   Alert.alert('운동을 건너뛰겠습니까?', '건너뛴 이후에는 다시 실행할 수 없습니다.', [
-    { text: '취소', onPress: () => console.log(' Stop') },
+    { text: '취소', onPress: () => console.log('Skip Stop') },
     {
       text: '건너뛰기',
-      onPress: () => goToNext,
+      onPress: () => goToNext(),
       style: 'destructive',
     },
   ])

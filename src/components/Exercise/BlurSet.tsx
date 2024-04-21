@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 import { colors } from '@/libs/Colors'
-import Check_disabled from '../../assets/SVGs/Check_Disabled.svg'
+import Check_disabled from '@/assets/images/SVGs/icon/Check_Disabled.svg'
 
 interface BlurProps {
   set: number

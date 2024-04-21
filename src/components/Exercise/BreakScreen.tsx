@@ -53,7 +53,7 @@ import exerciseData from '@/assets/datas/ExerciseData.json'
 const ExerciseData: ExerciseData = exerciseData
 const DataList = exerciseData.DataList
 
-export default function BreakScreen({ navigation }: any) {
+export default function BreakScreen({ navigation, toggleShowBreak }: any) {
   const [isDark, setIsDark] = useState<boolean>(false)
 
   const goToStartExercise = () => {
@@ -215,7 +215,7 @@ export default function BreakScreen({ navigation }: any) {
               <ArrowCircle width={24} height={24} color={isDark ? colors.black : colors.white} />
               <NextText isDark={isDark}>{DataList[1].ExerciseInfo.exerciseName}</NextText>
             </JustView>
-            <StartButton onPress={goToNextExercise}>
+            <StartButton onPress={toggleShowBreak}>
               <StartButtonText>바로 시작하기</StartButtonText>
             </StartButton>
           </NextTextView>

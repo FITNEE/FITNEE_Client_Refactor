@@ -10,10 +10,13 @@ import ExerciseCard from '@/components/Exercise/ExerciseCard'
 import { FlatList } from 'react-native-gesture-handler'
 import ExerciseButton from '@/components/Exercise/ExerciseButton'
 import { SkipConfirm, StopConfirm } from '@/utils/Exercise/alertList'
+import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
+import BreakScreen from '@/components/Exercise/BreakScreen'
 
 export default function ExerciseCourse({ navigation }: any) {
   const [isDark, setIsDark] = useState<boolean>(false)
   const isFocused = useIsFocused()
+  const [isPlaying, setIsPlaying] = useState<boolean>(true)
 
   //alert용 함수 모음
   const goToStart = () => navigation.navigate('StartExercise')
@@ -25,42 +28,62 @@ export default function ExerciseCourse({ navigation }: any) {
     //   skip: 1,
   }
 
-  return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: isDark ? colors.d_background : colors.white,
-      }}
-    >
-      <ExerciseCard exerciseName={'사이드 레터럴 레이즈'} isDark={isDark}>
-        <StopExercise onPress={() => StopConfirm(goToStart)}>
-          <Close width={24} height={24} color={isDark ? colors.white : colors.black} />
-        </StopExercise>
-        {/* <ExerciseCircle>
-          <ComponentWrapper zIndex={1}>
-            <ExerciseImage source={getImage[dataList[listIndex].exerciseInfo.healthCategoryIdx]} resizeMode="contain" />
-          </ComponentWrapper>
-          <ComponentWrapper zIndex={2}>
-            <CountdownCircleTimer
-              key={key}
-              isPlaying={isPlaying}
-              duration={35}
-              colors={colors.l_main}
-              size={315}
-              strokeWidth={8}
-              trailColor={isDark ? colors.grey_7 : colors.grey_3}
-              onComplete={() => ({ shouldRepeat: true })}
-              updateInterval={0.001}
-              isGrowing={true}
-              rotation={'counterclockwise'}
-            />
-          </ComponentWrapper>
-        </ExerciseCircle> */}
+  //휴식시간 toggle용 변수 모음
+  const [showExerciseCourse, setShowExerciseCourse] = useState<boolean>(false)
+  const [showBreak, setShowBreak] = useState<boolean>(false)
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false)
 
-        {/* <Indicator totalPages={dataList[listIndex].totalSets} currentPage={indicatorNum - 1} isDark={isDark} /> */}
+  const scrollBox = () => {
+    setTimeout(() => {
+      setShowBreak(true)
+      setIsButtonDisabled(false)
+      console.log('show', showExerciseCourse)
+    }, 2000)
+  }
 
-        <BoxList>
-          {/* <FlatList
+  if (showBreak)
+    return (
+      <BreakScreen
+        navigation={navigation}
+        toggleShowBreak={() => setShowBreak(false)} // toggle 함수
+      />
+    )
+  else
+    return (
+      <SafeAreaView
+        style={{
+          flex: 1,
+          backgroundColor: isDark ? colors.d_background : colors.white,
+        }}
+      >
+        <ExerciseCard exerciseName={'사이드 레터럴 레이즈'} isDark={isDark}>
+          <StopExercise onPress={() => StopConfirm(goToStart)}>
+            <Close width={24} height={24} color={isDark ? colors.white : colors.black} />
+          </StopExercise>
+          <ExerciseCircle>
+            <ComponentWrapper zIndex={1}>
+              <ExerciseImage source={getGIF[11]} resizeMode="contain" />
+            </ComponentWrapper>
+            <ComponentWrapper zIndex={2}>
+              <CountdownCircleTimer
+                isPlaying={isPlaying}
+                duration={35}
+                colors={colors.main1}
+                size={315}
+                strokeWidth={8}
+                trailColor={isDark ? colors.grey7 : colors.grey3}
+                onComplete={() => ({ shouldRepeat: true })}
+                updateInterval={0.001}
+                isGrowing={true}
+                rotation={'counterclockwise'}
+              />
+            </ComponentWrapper>
+          </ExerciseCircle>
+
+          {/* <Indicator totalPages={dataList[listIndex].totalSets} currentPage={indicatorNum - 1} isDark={isDark} /> */}
+
+          <BoxList>
+            {/* <FlatList
             data={exerciseData}
             renderItem={renderItem}
             keyExtractor={(item) => item.set}
@@ -71,25 +94,25 @@ export default function ExerciseCourse({ navigation }: any) {
             getItemLayout={getItemLayout}
             initialScrollIndex={scrollPosition.current}
           /> */}
-        </BoxList>
+          </BoxList>
 
-        <TextBox>
-          <JustText>{}</JustText>
-        </TextBox>
+          <TextBox>
+            <JustText>{}</JustText>
+          </TextBox>
 
-        <ExerciseButton //세트 완료 버튼
-          text="세트 완료"
-          disabled={false}
-          //onPress={scrollBox}
-          isDark={isDark}
-        />
+          <ExerciseButton //세트 완료 버튼
+            text="세트 완료"
+            disabled={false}
+            onPress={scrollBox}
+            isDark={isDark}
+          />
 
-        <SkipExercrise onPress={() => SkipConfirm(goToNextExercise)}>
-          <SkipExercriseText isDark={isDark}>이 운동 건너뛰기</SkipExercriseText>
-        </SkipExercrise>
-      </ExerciseCard>
-    </SafeAreaView>
-  )
+          <SkipExercrise onPress={() => SkipConfirm(goToNextExercise)}>
+            <SkipExercriseText isDark={isDark}>이 운동 건너뛰기</SkipExercriseText>
+          </SkipExercrise>
+        </ExerciseCard>
+      </SafeAreaView>
+    )
 }
 
 const TextBox = styled.View`
