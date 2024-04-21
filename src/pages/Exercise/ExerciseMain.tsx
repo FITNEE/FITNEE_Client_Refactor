@@ -95,7 +95,7 @@ export default function ExerciseMain({ navigation }: any) {
                     <ReplaceTextView isDark={isDark} key={healthCategoryIdx}>
                       <ReplaceText1 isDark={isDark}>{item.name}</ReplaceText1>
                       <ReplaceText2 isDark={isDark}>
-                        {item.parts} | {item.muscle} | {item.equipment}
+                        {item.parts} | edtiLength({item.muscle}) | {item.equipment}
                       </ReplaceText2>
                     </ReplaceTextView>
                   </ReplaceView2>

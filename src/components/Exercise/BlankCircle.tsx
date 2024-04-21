@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { Text } from 'react-native'
-import PercentageCircle from 'react-native-progress-circle'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 import { colors } from '@/libs/Colors'
 

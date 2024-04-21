@@ -14,5 +14,57 @@
     { "healthCategoryIdx": 3, "exerciseName": "바벨 로우", "weight": 0, "totalSets": 3 },
     { "healthCategoryIdx": 4, "exerciseName": "사이드 레터럴 레이즈", "weight": 10, "totalSets": 3 },
     { "healthCategoryIdx": 5, "exerciseName": "레그프레스", "weight": 50, "totalSets": 3 }
+  ],
+  "DataList": [
+    {
+      "ExerciseInfo": { "healthCategoryIdx": 1, "exerciseName": "데드리프트" },
+      "weight": 0,
+      "totalSets": 3,
+      "sets": [
+        { "weight": 0, "rep": 3 },
+        { "weight": 0, "rep": 3 },
+        { "weight": 0, "rep": 3 }
+      ]
+    },
+    {
+      "ExerciseInfo": { "healthCategoryIdx": 2, "exerciseName": "덤벨프레스" },
+      "weight": 4,
+      "totalSets": 3,
+      "sets": [
+        { "weight": 0, "rep": 3 },
+        { "weight": 0, "rep": 3 },
+        { "weight": 0, "rep": 3 }
+      ]
+    },
+    {
+      "ExerciseInfo": { "healthCategoryIdx": 3, "exerciseName": "바벨 로우" },
+      "weight": 0,
+      "totalSets": 3,
+      "sets": [
+        { "weight": 0, "rep": 3 },
+        { "weight": 0, "rep": 3 },
+        { "weight": 0, "rep": 3 }
+      ]
+    },
+    {
+      "ExerciseInfo": { "healthCategoryIdx": 4, "exerciseName": "사이드 레터럴 레이즈" },
+      "weight": 10,
+      "totalSets": 3,
+      "sets": [
+        { "weight": 0, "rep": 3 },
+        { "weight": 0, "rep": 3 },
+        { "weight": 0, "rep": 3 }
+      ]
+    },
+    {
+      "ExerciseInfo": { "healthCategoryIdx": 5, "exerciseName": "레그프레스" },
+      "weight": 50,
+      "totalSets": 3,
+      "sets": [
+        { "weight": 0, "rep": 3 },
+        { "weight": 0, "rep": 3 },
+        { "weight": 0, "rep": 3 }
+      ]
+    }
   ]
 }
