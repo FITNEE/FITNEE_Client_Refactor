@@ -3,9 +3,10 @@ import { isDarkModeAtom } from "@/states/GlobalStates";
 import { useAtom } from "jotai";
 import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
+//expo 시뮬레이터 메뉴바 단축키 : ctrl + cmd + z
 
 interface NavigationProps {
-  [propName: string]: any;
+  [propName: string]: any; // 이렇게 하면 navigate, map, filter, each 등의 추가 속성을 호출해도 오류메시지가 안뜬다.
 }
 
 export default function EmptyRoutine() {

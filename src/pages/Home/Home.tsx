@@ -1,13 +1,20 @@
 import ScreenLayout from "@/components/home/ScreenLayout";
 import Logo from "@/assets/images/SVGs/icon/Logo.svg";
-import { useAtom } from "jotai";
-import { isDarkModeAtom } from "@/states/GlobalStates";
+import { useAtom, useSetAtom } from "jotai";
+import { isDarkModeAtom, isTabVisibleAtom } from "@/states/GlobalStates";
 import { colors } from "@/libs/Colors";
 import styled from "styled-components/native";
 import Routine from "./Routine";
 import EmptyRoutine from "./EmptyRoutine";
+import { useEffect } from "react";
+import { useIsFocused } from "@react-navigation/native";
 
 export default function Home() {
+  const isFocus = useIsFocused();
+  const setTabVisible = useSetAtom(isTabVisibleAtom);
+  useEffect(() => {
+    isFocus && setTabVisible(true);
+  }, [isFocus]);
   const [isDark] = useAtom(isDarkModeAtom);
   return (
     <ScreenLayout>
