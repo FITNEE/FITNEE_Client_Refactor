@@ -33,7 +33,7 @@ export default function CreateRoutineNav() {
       <Stack.Screen
         name="CreateRoutine_1"
         options={{
-          headerShown: true,
+          headerShown: false,
         }}
         component={CreateRoutine_1}
       />

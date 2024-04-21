@@ -6,9 +6,13 @@ import { View, Text } from "react-native";
 import styled from "styled-components/native";
 import { Animated } from "react-native";
 
-export default function ProgressBar() {
+interface ProgressProps {
+  progress: number;
+}
+
+export default function ProgressBar({ progress }: ProgressProps) {
   const [isDark] = useAtom(isDarkModeAtom);
-  const [progress, setProgress] = useState(0);
+  //   const [progress, setProgress] = useState(0);
   const animatedWidth = useRef(new Animated.Value(0)).current;
   useEffect(() => {
     Animated.timing(animatedWidth, {
@@ -17,19 +21,18 @@ export default function ProgressBar() {
       useNativeDriver: false,
     }).start();
   }, [progress]);
-  const handleButtonClick = () => {
-    if (progress < 100) {
-      setProgress(progress + 25);
-    }
-  };
-  const handleButtonBack = () => {
-    if (progress > 0) {
-      setProgress(progress - 25);
-    }
-  };
+  //   const handleButtonClick = () => {
+  //     if (progress < 100) {
+  //       setProgress(progress + 25);
+  //     }
+  //   };
+  //   const handleButtonBack = () => {
+  //     if (progress > 0) {
+  //       setProgress(progress - 25);
+  //     }
+  //   };
   return (
-    <View>
-      <Text>ProgressBar {progress}%</Text>
+    <Container>
       <Progress_Bar>
         <ProgressBarFill
           style={{
@@ -40,12 +43,18 @@ export default function ProgressBar() {
           }}
         />
       </Progress_Bar>
+      {/* <Text>ProgressBar {progress}%</Text>
       <Button title="progress" onPress={handleButtonClick} />
-      <Button title="backProgress" onPress={handleButtonBack} />
-    </View>
+      <Button title="backProgress" onPress={handleButtonBack} /> */}
+    </Container>
   );
 }
-
+const Container = styled.View`
+  width: 100%;
+  height: 16px;
+  justify-content: center;
+  align-items: center;
+`;
 const Progress_Bar = styled.View<{ isDark: boolean }>`
   width: 90%;
   height: 8px;
@@ -53,7 +62,8 @@ const Progress_Bar = styled.View<{ isDark: boolean }>`
     props.isDark ? colors.grey9 : colors.grey2};
   border-radius: 10px;
   overflow: hidden;
-  margin-top: 4px;
+  /* margin-top: 4px;
+  margin-left: 5%; */
 `;
 const ProgressBarFill = styled(Animated.View)<{ isDark: boolean }>`
   height: 100%;
