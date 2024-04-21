@@ -1,3 +1,4 @@
+import ProgressBar from "@/components/CreateRoutine/ProgressBar";
 import { isTabVisibleAtom } from "@/states/GlobalStates";
 import { useIsFocused } from "@react-navigation/native";
 import { useSetAtom } from "jotai";
@@ -13,6 +14,7 @@ export default function CreateRoutine_1() {
   return (
     <View>
       <Text>CreateRoutine_1</Text>
+      <ProgressBar />
     </View>
   );
 }
