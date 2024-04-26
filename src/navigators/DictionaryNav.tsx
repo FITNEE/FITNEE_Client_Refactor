@@ -1,6 +1,5 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import Home from '@/pages/home/Home'
 import Main from '@/pages/dictionary/Dictionary'
 import Search from '@/pages/dictionary/Search'
 import Info from '@/pages/dictionary/Info'
