@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import styled from "styled-components/native";
 import { colors } from "@/libs/Colors";
 import { useAtom } from "jotai";
@@ -12,7 +12,7 @@ interface NextProps {
   next: () => void;
 }
 
-export default function CreateRoutine1({ next }: NextProps) {
+export default function CreateRoutine2({ next }: NextProps) {
   const [isDark] = useAtom(isDarkModeAtom);
   const [home, SetHome] = useState(false);
   const [fitness, SetFitness] = useState(false);
