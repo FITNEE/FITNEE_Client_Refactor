@@ -49,8 +49,7 @@ const TitleBlock = styled.View`
 `;
 const Title = styled.Text<{ isDark: boolean }>`
   font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
+  font-family: "SemiBold";
   line-height: 33.6px;
   height: 32px;
   text-align: center;
@@ -60,8 +59,7 @@ const Title = styled.Text<{ isDark: boolean }>`
 `;
 const SubText = styled.Text<{ isDark: boolean }>`
   font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
+  font-family: "Regular";
   line-height: 19.5px;
   text-align: center;
   color: ${(props: { isDark: boolean }) =>
@@ -78,8 +76,7 @@ const Button = styled.TouchableOpacity`
 `;
 const ButtonText = styled.Text<{ isDark: boolean }>`
   font-size: 17px;
-  font-style: normal;
-  font-weight: 600;
+  font-family: "SemiBold";
   line-height: 25.5px;
   color: ${(props: { isDark: boolean }) =>
     props.isDark ? colors.black : colors.white};

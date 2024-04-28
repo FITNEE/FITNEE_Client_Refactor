@@ -50,20 +50,18 @@ export default function ProgressBar({ progress }: ProgressProps) {
   );
 }
 const Container = styled.View`
-  width: 100%;
+  padding: 0 24px;
   height: 16px;
   justify-content: center;
   align-items: center;
 `;
 const Progress_Bar = styled.View<{ isDark: boolean }>`
-  width: 90%;
+  width: 100%;
   height: 8px;
   background-color: ${(props: { isDark: boolean }) =>
     props.isDark ? colors.grey9 : colors.grey2};
   border-radius: 10px;
   overflow: hidden;
-  /* margin-top: 4px;
-  margin-left: 5%; */
 `;
 const ProgressBarFill = styled(Animated.View)<{ isDark: boolean }>`
   height: 100%;

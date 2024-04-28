@@ -64,7 +64,6 @@ const Header = styled.View<{ isDark: boolean }>`
   align-items: center;
   justify-content: center;
   padding: 10px;
-  /* margin-top: 44px; */
 `;
 const BackButton = styled.TouchableOpacity`
   position: absolute;
@@ -77,6 +76,5 @@ const Title = styled.Text<{ isDark: boolean }>`
     props.isDark ? colors.white : colors.black};
 `;
 const Content = styled.View`
-  width: 90%;
-  margin-left: 5%;
+  padding: 0 24px;
 `;

@@ -91,13 +91,12 @@ export default function CreateRoutine1({ next }: NextProps) {
   );
 }
 const TitleContainer = styled.View`
-  width: 90%;
-  margin-bottom: 121px;
+  margin-bottom: 34.3%;
 `;
 const Title = styled.Text<{ isDark: boolean }>`
   font-size: 24px;
   font-family: "SemiBold";
-  line-height: 33.6px; /*  */
+  line-height: 33.6px;
   margin-top: 52px;
   color: ${(props: { isDark: boolean }) =>
     props.isDark ? colors.white : colors.black};
@@ -105,15 +104,12 @@ const Title = styled.Text<{ isDark: boolean }>`
 const SubTitle = styled.Text<{ isDark: boolean }>`
   font-size: 13px;
   margin-top: 8px;
-  line-height: 19.5px; /* 19.5px */
+  line-height: 19.5px;
   color: ${(props: { isDark: boolean }) =>
     props.isDark ? colors.white : colors.black};
 `;
 const SpaceContainer = styled.View`
   flex-direction: row;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
   justify-content: space-around;
 `;
 const SpaceItem = styled.TouchableOpacity<ActiveProps>`
@@ -149,19 +145,15 @@ const SpaceName = styled.Text<ActiveProps>`
     props.isActive ? colors.main1 : props.isDark ? colors.white : colors.black};
 `;
 const Content = styled.View`
-  width: 100%;
   height: 87.4%;
 `;
 const NextButton = styled.TouchableOpacity<ActiveProps>`
-  width: 90%;
   height: 52px;
   align-items: center;
   justify-content: center;
-  /* margin-top: 165px; */
-  margin-left: 5%;
   background-color: ${(props: ActiveProps) =>
     props.isActive ? colors.main1 : props.isDark ? colors.grey7 : colors.grey3};
-  border-radius: 10px;
+  border-radius: 12px;
 `;
 const ButtonText = styled.Text<ActiveProps>`
   font-size: 17px;
