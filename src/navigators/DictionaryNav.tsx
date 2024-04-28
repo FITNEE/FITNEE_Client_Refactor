@@ -1,14 +1,22 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import Home from '@/pages/Home/Home'
-import Dictionary from '@/pages/Dictionary/Dictionary'
+import Main from '@/pages/dictionary/Dictionary'
+import Search from '@/pages/dictionary/Search'
+import Info from '@/pages/dictionary/Info'
 
 const Stack = createStackNavigator()
 
 export default function DictionaryNav() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="DictionaryMain" component={Dictionary} />
+    <Stack.Navigator
+      screenOptions={{
+        headerBackTitleVisible: false,
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="DictionaryMain" component={Main} />
+      <Stack.Screen name="DictionarySearch" component={Search} />
+      <Stack.Screen name="DictionaryInfo" component={Info} />
     </Stack.Navigator>
   )
 }
