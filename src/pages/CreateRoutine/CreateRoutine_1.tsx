@@ -9,6 +9,7 @@ import styled from 'styled-components/native'
 import { colors } from '@/libs/Colors'
 import { NavigationProps } from '../home/EmptyRoutine'
 import CreateRoutine1 from '@/components/CreateRoutine/CreateRoutine1'
+import CreateRoutine2 from '@/components/CreateRoutine/CreateRoutine2'
 
 export interface ActiveProps {
   isDark: boolean
@@ -45,7 +46,10 @@ export default function CreateRoutine_1() {
         <Title>루틴 생성</Title>
       </Header>
       <ProgressBar progress={progress} />
-      <Content>{progress === 0 && <CreateRoutine1 next={handleButtonClick} />}</Content>
+      <Content>
+        {progress === 0 && <CreateRoutine1 next={handleButtonClick} />}
+        {progress === 25 && <CreateRoutine2 next={handleButtonClick} />}
+      </Content>
     </ScreenLayout>
   )
 }
