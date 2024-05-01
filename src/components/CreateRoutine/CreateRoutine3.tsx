@@ -135,7 +135,7 @@ export default function CreateRoutine3({ next }: NextProps) {
           </AllButton>
         </PartWrapper>
       </Content>
-      <NextButton isDark={isDark} isActive={select} onPress={next}>
+      <NextButton isDark={isDark} isActive={select} onPress={next} disabled={!select}>
         <ButtonText isDark={isDark} isActive={select}>
           다음
         </ButtonText>

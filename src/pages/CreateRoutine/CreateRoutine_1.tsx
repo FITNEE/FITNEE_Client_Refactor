@@ -11,6 +11,7 @@ import { NavigationProps } from '../home/EmptyRoutine'
 import CreateRoutine1 from '@/components/CreateRoutine/CreateRoutine1'
 import CreateRoutine2 from '@/components/CreateRoutine/CreateRoutine2'
 import CreateRoutine3 from '@/components/CreateRoutine/CreateRoutine3'
+import CreateRoutine4 from '@/components/CreateRoutine/CreateRoutine4'
 
 export interface ActiveProps {
   isDark: boolean
@@ -51,6 +52,7 @@ export default function CreateRoutine_1() {
         {progress === 20 && <CreateRoutine1 next={handleButtonClick} />}
         {progress === 40 && <CreateRoutine2 next={handleButtonClick} />}
         {progress === 60 && <CreateRoutine3 next={handleButtonClick} />}
+        {progress >= 80 && <CreateRoutine4 next={handleButtonClick} />}
       </Content>
     </ScreenLayout>
   )
