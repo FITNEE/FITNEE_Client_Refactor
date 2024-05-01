@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 import { colors } from '@/libs/Colors'
 import { useAtom } from 'jotai'
 import { isDarkModeAtom } from '@/states/GlobalStates'
-import { ActiveProps } from '@/pages/CreateRoutine/CreateRoutine_1'
+import { ActiveProps } from '@/pages/CreateRoutine/CreateRoutine'
 import { NextProps } from './CreateRoutine1'
 import { useEffect, useState } from 'react'
 
