@@ -10,6 +10,7 @@ import { colors } from '@/libs/Colors'
 import { NavigationProps } from '../home/EmptyRoutine'
 import CreateRoutine1 from '@/components/CreateRoutine/CreateRoutine1'
 import CreateRoutine2 from '@/components/CreateRoutine/CreateRoutine2'
+import CreateRoutine3 from '@/components/CreateRoutine/CreateRoutine3'
 
 export interface ActiveProps {
   isDark: boolean
@@ -21,17 +22,17 @@ export default function CreateRoutine_1() {
   const [isDark] = useAtom(isDarkModeAtom)
   const setTabVisible = useSetAtom(isTabVisibleAtom)
   const navigation = useNavigation<NavigationProps>()
-  const [progress, setProgress] = useState(0)
+  const [progress, setProgress] = useState(20)
   const handleButtonClick = () => {
     if (progress < 100) {
-      setProgress(progress + 25)
+      setProgress(progress + 20)
     }
   }
   const handleButtonBack = () => {
-    if (progress === 0) {
+    if (progress === 20) {
       navigation.goBack()
-    } else if (progress > 0) {
-      setProgress(progress - 25)
+    } else if (progress > 20) {
+      setProgress(progress - 20)
     }
   }
   useEffect(() => {
@@ -47,8 +48,9 @@ export default function CreateRoutine_1() {
       </Header>
       <ProgressBar progress={progress} />
       <Content>
-        {progress === 0 && <CreateRoutine1 next={handleButtonClick} />}
-        {progress === 25 && <CreateRoutine2 next={handleButtonClick} />}
+        {progress === 20 && <CreateRoutine1 next={handleButtonClick} />}
+        {progress === 40 && <CreateRoutine2 next={handleButtonClick} />}
+        {progress === 60 && <CreateRoutine3 next={handleButtonClick} />}
       </Content>
     </ScreenLayout>
   )
