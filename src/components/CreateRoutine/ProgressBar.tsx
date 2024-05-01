@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from 'react'
 import { View, Text } from 'react-native'
 import styled from 'styled-components/native'
 import { Animated } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { NavigationProps } from '@/pages/home/EmptyRoutine'
 
 interface ProgressProps {
   progress: number
@@ -13,13 +15,18 @@ interface ProgressProps {
 export default function ProgressBar({ progress }: ProgressProps) {
   const [isDark] = useAtom(isDarkModeAtom)
   //   const [progress, setProgress] = useState(0);
+  const navigation = useNavigation<NavigationProps>()
   const animatedWidth = useRef(new Animated.Value(0)).current
+  const goToResult = () => navigation.navigate('Result')
   useEffect(() => {
     Animated.timing(animatedWidth, {
       toValue: progress,
       duration: 500,
       useNativeDriver: false,
     }).start()
+    if (progress === 100) {
+      setTimeout(goToResult, 470)
+    }
   }, [progress])
   //   const handleButtonClick = () => {
   //     if (progress < 100) {
