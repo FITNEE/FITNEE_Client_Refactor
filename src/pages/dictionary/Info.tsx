@@ -5,10 +5,12 @@ import { TouchableOpacity } from 'react-native'
 import { colors } from '@/libs/Colors'
 import DictionaryBottomSheet from '@/components/dictionary/BottomSheet'
 import { getGIF } from '@/utils/getImage'
+import AddtoRoutineModal from '@/components/dictionary/AddToRoutineModal'
 
 export default function DictionaryInfo() {
   return (
     <ScreenLayout lightBack={colors.grey1}>
+      <AddtoRoutineModal />
       <TopContainer>
         <TouchableOpacity>
           <BackIcon width={24} height={24} color={colors.black} />
