@@ -17,7 +17,7 @@ export default function ProgressBar({ progress }: ProgressProps) {
   //   const [progress, setProgress] = useState(0);
   const navigation = useNavigation<NavigationProps>()
   const animatedWidth = useRef(new Animated.Value(0)).current
-  const goToResult = () => navigation.navigate('Result')
+  const goToLoading = () => navigation.navigate('Loading')
   useEffect(() => {
     Animated.timing(animatedWidth, {
       toValue: progress,
@@ -25,7 +25,7 @@ export default function ProgressBar({ progress }: ProgressProps) {
       useNativeDriver: false,
     }).start()
     if (progress === 100) {
-      setTimeout(goToResult, 470)
+      setTimeout(goToLoading, 470)
     }
   }, [progress])
   //   const handleButtonClick = () => {

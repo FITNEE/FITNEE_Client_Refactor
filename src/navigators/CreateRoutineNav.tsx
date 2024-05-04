@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import CreateRoutine from '@/pages/CreateRoutine/CreateRoutine'
 import HomeNav from './HomeNav'
-import Result from '@/pages/CreateRoutine/Result'
+import Loading from '@/pages/CreateRoutine/Loading'
 
 const Stack = createStackNavigator()
 
@@ -27,11 +27,11 @@ export default function CreateRoutineNav() {
         component={CreateRoutine}
       />
       <Stack.Screen
-        name="Result"
+        name="Loading"
         options={{
           headerShown: false,
         }}
-        component={Result}
+        component={Loading}
       />
       <Stack.Screen
         name="Home"
