@@ -5,17 +5,15 @@ import SearchIcon from '@/assets/images/SVGs/icon/Search.svg'
 import CloseIcon from '@/assets/images/SVGs/icon/Close_Circled.svg'
 import { useAtom } from 'jotai'
 import { isDarkModeAtom } from '@/states/GlobalStates'
-import { GestureResponderEvent, NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
+import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
 
 interface SearchBarProps {
   text: string
   setText: React.Dispatch<React.SetStateAction<string>>
-  disabled: boolean
-  onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void
-  onPress?: (event: GestureResponderEvent) => void
+  onSubmit?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void
 }
 
-export default function SearchBar({ text, setText, disabled, onChange, onPress }: SearchBarProps) {
+export default function SearchBar({ text, setText, onSubmit }: SearchBarProps) {
   const [isDark] = useAtom(isDarkModeAtom)
 
   const onPressResetIcon = () => {
@@ -27,26 +25,20 @@ export default function SearchBar({ text, setText, disabled, onChange, onPress }
 
   return (
     <Container>
-      {disabled ? (
-        <PressableBackground onPress={onPress}>
-          <SearchIcon width={24} height={24} color={colors.black} />
-          <Placeholder>운동명 검색</Placeholder>
-        </PressableBackground>
-      ) : (
-        <Background>
-          <SearchIcon width={24} height={24} color={colors.black} />
-          <SearchArea
-            keyboardAppearance={isDark ? 'dark' : 'light'}
-            placeholder="운동명 검색"
-            placeholderTextColor={isDark ? colors.grey3 : colors.grey7}
-            returnKeyType="search"
-            value={text}
-            onChange={onChangeText}
-            autofocus
-          />
-          {text.length !== 0 && <CloseIcon width={24} height={24} color={colors.grey4} onPress={onPressResetIcon} />}
-        </Background>
-      )}
+      <Background>
+        <SearchIcon width={24} height={24} color={colors.black} />
+        <SearchArea
+          keyboardAppearance={isDark ? 'dark' : 'light'}
+          placeholder="운동명 검색"
+          placeholderTextColor={isDark ? colors.grey3 : colors.grey7}
+          returnKeyType="search"
+          value={text}
+          onChange={onChangeText}
+          autofocus
+          onSubmitEditing={onSubmit}
+        />
+        {text.length !== 0 && <CloseIcon width={24} height={24} color={colors.grey4} onPress={onPressResetIcon} />}
+      </Background>
     </Container>
   )
 }
@@ -63,21 +55,6 @@ export const Background = styled.View`
   padding: 8px 12px;
   flex-direction: row;
   gap: 12px;
-`
-export const PressableBackground = styled.Pressable`
-  background-color: ${colors.grey1};
-  border-radius: 12px;
-  width: 100%;
-  padding: 8px 12px;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-`
-
-export const Placeholder = styled.Text`
-  color: ${colors.grey7};
-  font-family: 'Regular';
-  font-size: 16px;
 `
 export const SearchArea = styled.TextInput`
   color: ${colors.black};
