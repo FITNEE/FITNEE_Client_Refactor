@@ -7,7 +7,6 @@ import { DictionaryNavParams } from '@/navigators/DictionaryNav'
 import { SearchTextAtom } from '@/states/DictionaryStates'
 import { StackScreenProps } from '@react-navigation/stack'
 import { useAtom } from 'jotai'
-import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
 import styled from 'styled-components/native'
 
 type DictionaryMainProps = StackScreenProps<DictionaryNavParams, 'DictionaryMain'>
@@ -15,29 +14,20 @@ type DictionaryMainProps = StackScreenProps<DictionaryNavParams, 'DictionaryMain
 export default function DictionaryMain({ navigation }: DictionaryMainProps) {
   const [searchText, setSearchText] = useAtom(SearchTextAtom)
 
+  const onPressSearchBar = () => {
+    navigation.navigate('DictionarySearch')
+  }
+
   return (
     <ScreenLayout>
-      <SearchBar text={searchText} setText={setSearchText} />
-      {searchText.length === 0 ? (
-        <>
-          <Divider />
-          <KeywordList
-            title="최근 검색 키워드"
-            keywords={['데드리프트', '사이드 레터럴 레이즈']}
-            style={{ marginTop: 40 }}
-          />
-          <KeywordList
-            title="인기 키워드"
-            keywords={['데드리프트', '사이드 레터럴 레이즈']}
-            style={{ marginTop: 56 }}
-          />
-        </>
-      ) : (
-        <AutoCompleteList
-          keyword={searchText}
-          list={['데드리프트', '이사이드 레터럴 사이즈']}
-        />
-      )}
+      <SearchBar text={searchText} setText={setSearchText} disabled={true} onPress={onPressSearchBar} />
+      <Divider />
+      <KeywordList
+        title="최근 검색 키워드"
+        keywords={['데드리프트', '사이드 레터럴 레이즈']}
+        style={{ marginTop: 40 }}
+      />
+      <KeywordList title="인기 키워드" keywords={['데드리프트', '사이드 레터럴 레이즈']} style={{ marginTop: 56 }} />
     </ScreenLayout>
   )
 }
