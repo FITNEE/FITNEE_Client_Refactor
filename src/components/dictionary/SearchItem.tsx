@@ -1,20 +1,18 @@
 import { colors } from '@/libs/Colors'
 import styled from 'styled-components/native'
 import RightIcon from '@/assets/images/SVGs/icon/RightArrow.svg'
+import { GestureResponderEvent } from 'react-native'
 
 interface SearchItemProps {
   name: string
   part: string[]
   exerciseId: number
+  onPress: (event: GestureResponderEvent) => void
 }
 
-export default function SearchItem({
-  name,
-  part,
-  exerciseId,
-}: SearchItemProps) {
+export default function SearchItem({ name, part, exerciseId, onPress }: SearchItemProps) {
   return (
-    <Container>
+    <Container onPress={onPress}>
       <Left>
         <ImageThumb />
         <InfoContainer>

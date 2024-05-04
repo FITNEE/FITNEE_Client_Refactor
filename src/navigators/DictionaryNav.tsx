@@ -5,7 +5,7 @@ import Info from '@/pages/dictionary/Info'
 
 export type DictionaryNavParams = {
   DictionaryMain: undefined
-  DictionaryInfo: undefined
+  DictionaryInfo: { exerciseId: number }
 }
 
 const Stack = createStackNavigator<DictionaryNavParams>()

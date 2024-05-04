@@ -26,6 +26,10 @@ export default function DictionaryMain({ navigation }: DictionaryMainProps) {
     isDone && setIsDone(false)
   }, [searchText])
 
+  const onPressExercise = () => {
+    navigation.navigate('DictionaryInfo', { exerciseId: 1 })
+  }
+
   return (
     <ScreenLayout>
       <SearchBar text={searchText} setText={setSearchText} onSubmit={onSubmitEdit} />
@@ -33,7 +37,7 @@ export default function DictionaryMain({ navigation }: DictionaryMainProps) {
         <>
           <PartList />
           <SearchItemContainer showsVerticalScrollIndicator={false}>
-            <SearchItem name="데드리프트" part={['전신', '코어']} exerciseId={1} />
+            <SearchItem name="데드리프트" part={['전신', '코어']} exerciseId={1} onPress={onPressExercise} />
           </SearchItemContainer>
         </>
       ) : searchText.length === 0 ? (
