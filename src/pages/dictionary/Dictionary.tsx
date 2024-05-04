@@ -3,12 +3,16 @@ import AutoCompleteList from '@/components/dictionary/AutoCompleteList'
 import KeywordList from '@/components/dictionary/KeywordList'
 import SearchBar from '@/components/dictionary/SearchBar'
 import { colors } from '@/libs/Colors'
+import { DictionaryNavParams } from '@/navigators/DictionaryNav'
 import { SearchTextAtom } from '@/states/DictionaryStates'
+import { StackScreenProps } from '@react-navigation/stack'
 import { useAtom } from 'jotai'
 import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
 import styled from 'styled-components/native'
 
-export default function DictionaryMain() {
+type DictionaryMainProps = StackScreenProps<DictionaryNavParams, 'DictionaryMain'>
+
+export default function DictionaryMain({ navigation }: DictionaryMainProps) {
   const [searchText, setSearchText] = useAtom(SearchTextAtom)
 
   return (

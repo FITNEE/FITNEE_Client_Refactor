@@ -4,7 +4,13 @@ import Main from '@/pages/dictionary/Dictionary'
 import Search from '@/pages/dictionary/Search'
 import Info from '@/pages/dictionary/Info'
 
-const Stack = createStackNavigator()
+export type DictionaryNavParams = {
+  DictionaryMain: undefined
+  DictionarySearch: undefined
+  DictionaryInfo: undefined
+}
+
+const Stack = createStackNavigator<DictionaryNavParams>()
 
 export default function DictionaryNav() {
   return (
