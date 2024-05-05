@@ -24,7 +24,7 @@ export default function Result() {
         </TitleContainer>
         <RoutineResult />
       </Content>
-      <NextButton isDark={isDark}>
+      <NextButton isDark={isDark} onPress={() => navigation.navigate('Home')}>
         <ButtonText isDark={isDark}>이 루틴으로 결정</ButtonText>
       </NextButton>
     </ScreenLayout>

@@ -58,12 +58,6 @@ export default function Loading() {
 
   return (
     <ScreenLayout>
-      <Header>
-        <BackButton onPress={handleButtonBack}>
-          <LeftArrow width={24} height={24} color={isDark ? colors.white : colors.black} />
-        </BackButton>
-        <Title>Loading</Title>
-      </Header>
       <LoadingContainer isDark={isDark}>
         <LoadingImage isDark={isDark} source={require('@/assets/images/GIFs/creatingRoutine.gif')} />
         <Animated.Text style={{ opacity, color: isDark ? colors.white : colors.black }}>{loadingText}</Animated.Text>
@@ -71,24 +65,6 @@ export default function Loading() {
     </ScreenLayout>
   )
 }
-const Header = styled.View<{ isDark: boolean }>`
-  flex-direction: row;
-  width: 100%;
-  height: 56px;
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.black : colors.grey1)};
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-`
-const BackButton = styled.TouchableOpacity`
-  position: absolute;
-  left: 5%;
-`
-const Title = styled.Text<{ isDark: boolean }>`
-  font-family: 'SemiBold';
-  font-size: 17px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
-`
 const LoadingContainer = styled.View`
   flex: 1;
   width: 100%;
