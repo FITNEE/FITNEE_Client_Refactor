@@ -9,10 +9,11 @@ import ScreenLayout from '@/components/home/ScreenLayout'
 import LeftArrow from '@/assets/images/SVGs/icon/LeftArrow.svg'
 import { useEffect, useState } from 'react'
 
-export default function Result() {
+export default function Loading() {
   const [isDark] = useAtom(isDarkModeAtom)
   const navigation = useNavigation<NavigationProps>()
   const handleButtonBack = () => navigation.goBack()
+  const goToResult = () => navigation.navigate('Result')
   const [opacity] = useState(new Animated.Value(0))
   const LoadingTexts = [
     '트레이닝 루틴을 생성 중입니다',
@@ -41,6 +42,7 @@ export default function Result() {
         }),
       ]),
     ).start()
+    setTimeout(goToResult, 2000)
 
     const interval = setInterval(() => {
       setLoadingTextIndex(prevIndex => (prevIndex + 1) % LoadingTexts.length)
@@ -60,10 +62,10 @@ export default function Result() {
         <BackButton onPress={handleButtonBack}>
           <LeftArrow width={24} height={24} color={isDark ? colors.white : colors.black} />
         </BackButton>
-        <Title>Result</Title>
+        <Title>Loading</Title>
       </Header>
       <LoadingContainer isDark={isDark}>
-        <Loading isDark={isDark} source={require('@/assets/images/GIFs/creatingRoutine.gif')} />
+        <LoadingImage isDark={isDark} source={require('@/assets/images/GIFs/creatingRoutine.gif')} />
         <Animated.Text style={{ opacity, color: isDark ? colors.white : colors.black }}>{loadingText}</Animated.Text>
       </LoadingContainer>
     </ScreenLayout>
@@ -96,7 +98,7 @@ const LoadingContainer = styled.View`
   background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.black : colors.grey1)};
 `
 
-const Loading = styled.Image`
+const LoadingImage = styled.Image`
   width: 306px;
   height: 306px;
   border-radius: 153px;

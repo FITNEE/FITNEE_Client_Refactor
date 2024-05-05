@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import CreateRoutine from '@/pages/CreateRoutine/CreateRoutine'
 import HomeNav from './HomeNav'
 import Loading from '@/pages/CreateRoutine/Loading'
+import Result from '@/pages/CreateRoutine/Result'
 
 const Stack = createStackNavigator()
 
@@ -32,6 +33,13 @@ export default function CreateRoutineNav() {
           headerShown: false,
         }}
         component={Loading}
+      />
+      <Stack.Screen
+        name="Result"
+        options={{
+          headerShown: false,
+        }}
+        component={Result}
       />
       <Stack.Screen
         name="Home"

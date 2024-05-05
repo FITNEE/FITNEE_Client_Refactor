@@ -93,7 +93,7 @@ export default function CreateRoutine4({ next }: NextProps) {
       </Content>
       <NextButton isDark={isDark} isActive={select} onPress={next} disabled={!select}>
         <ButtonText isDark={isDark} isActive={select}>
-          다음
+          선택 완료
         </ButtonText>
       </NextButton>
     </View>
