@@ -40,7 +40,6 @@ export default function DictionaryBottomSheet() {
 
   const showAddRoutineModal = () => {
     setIsModalVisible(true)
-    console.log(1)
   }
 
   const renderBackdrop = useCallback(
