@@ -67,6 +67,7 @@ const TopContainer = styled.View`
   gap: 24px;
   padding: 24px 16px;
   width: 100%;
+  align-items: center;
 `
 const TitleContainer = styled.View`
   gap: 8px;
@@ -98,7 +99,7 @@ const CancelBtn = styled.TouchableOpacity`
   background-color: ${colors.grey2};
   align-items: center;
   padding: 15px 0;
-  flex: 1;
+  flex: 2;
 `
 const CancelText = styled.Text`
   color: ${colors.grey7};
@@ -110,7 +111,7 @@ const ConfirmBtn = styled.TouchableOpacity`
   background-color: ${colors.main1};
   align-items: center;
   padding: 15px 0;
-  flex: 2;
+  flex: 3;
 `
 const ConfirmText = styled.Text`
   color: ${colors.white};

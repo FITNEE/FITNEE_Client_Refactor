@@ -39,7 +39,7 @@ export default function AddtoRoutineButton({ disabled }: AddtoRoutineButtonProps
   )
 }
 
-const width = screenWidth / 2 - 46
+const width = screenWidth / 2 - 48
 
 const Container = styled.TouchableOpacity`
   padding: 10px 8px;
