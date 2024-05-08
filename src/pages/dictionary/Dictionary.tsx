@@ -6,7 +6,7 @@ import SearchBar from '@/components/dictionary/SearchBar'
 import SearchItem from '@/components/dictionary/SearchItem'
 import { colors } from '@/libs/Colors'
 import { DictionaryNavParams } from '@/navigators/DictionaryNav'
-import { SearchTextAtom } from '@/states/DictionaryStates'
+import { SearchStatusAtom, SearchTextAtom } from '@/states/DictionaryStates'
 import { StackScreenProps } from '@react-navigation/stack'
 import { useAtom } from 'jotai'
 import { useEffect, useState } from 'react'
@@ -15,16 +15,8 @@ import styled from 'styled-components/native'
 type DictionaryMainProps = StackScreenProps<DictionaryNavParams, 'DictionaryMain'>
 
 export default function DictionaryMain({ navigation }: DictionaryMainProps) {
-  const [searchText, setSearchText] = useAtom(SearchTextAtom)
-  const [isDone, setIsDone] = useState<boolean>(false)
-
-  const onSubmitEdit = () => {
-    setIsDone(true)
-  }
-
-  useEffect(() => {
-    isDone && setIsDone(false)
-  }, [searchText])
+  const [searchText] = useAtom(SearchTextAtom)
+  const [searchStatus] = useAtom(SearchStatusAtom)
 
   const onPressExercise = () => {
     navigation.navigate('DictionaryInfo', { exerciseId: 1 })
@@ -32,15 +24,15 @@ export default function DictionaryMain({ navigation }: DictionaryMainProps) {
 
   return (
     <ScreenLayout>
-      <SearchBar text={searchText} setText={setSearchText} onSubmit={onSubmitEdit} />
-      {isDone ? (
+      <SearchBar />
+      {searchStatus === 'done' ? (
         <>
           <PartList />
           <SearchItemContainer showsVerticalScrollIndicator={false}>
             <SearchItem name="데드리프트" part={['전신', '코어']} exerciseId={1} onPress={onPressExercise} />
           </SearchItemContainer>
         </>
-      ) : searchText.length === 0 ? (
+      ) : searchStatus === 'noText' ? (
         <>
           <Divider />
           <KeywordList

@@ -1,4 +1,6 @@
 import { colors } from '@/libs/Colors'
+import { SearchStatusAtom, SearchTextAtom } from '@/states/DictionaryStates'
+import { useAtom } from 'jotai'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -8,13 +10,14 @@ interface KeywordListProps {
   style?: React.CSSProperties
 }
 
-export default function KeywordList({
-  title,
-  keywords,
-  style,
-}: KeywordListProps) {
+export default function KeywordList({ title, keywords, style }: KeywordListProps) {
+  const [, setSearchText] = useAtom(SearchTextAtom)
+  const [, setSearchStatus] = useAtom(SearchStatusAtom)
+
   const onPressKeyword = (keyword: string) => {
     // 검색, 검색키워드 저장 api
+    setSearchText(keyword)
+    setSearchStatus('done')
   }
   return (
     <Container style={{ ...style }}>
