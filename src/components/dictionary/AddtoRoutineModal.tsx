@@ -5,6 +5,7 @@ import { useAtom } from 'jotai'
 import { ModalVisibilityAtom } from '@/states/DictionaryStates'
 import { colors } from '@/libs/Colors'
 import AddtoRoutineButton from './AddtoRoutineButton'
+import ToastMessage from '../ToastMessage'
 
 const dummyData = [
   { day: '1', part: '아이템 1' },
@@ -21,6 +22,7 @@ export default function AddtoRoutineModal() {
 
   const onPressConfirmBtn = () => {
     setIsVisible(false)
+    ToastMessage('해당 운동이 마이루틴에 추가되었습니다.')
   }
 
   return (

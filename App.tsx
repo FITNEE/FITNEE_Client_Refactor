@@ -4,6 +4,8 @@ import { useFonts } from 'expo-font'
 import { useCallback } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import { View } from 'react-native'
+import Toast from 'react-native-toast-message'
+import { toastConfig } from '@/components/ToastMessage'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -35,6 +37,7 @@ export default function App() {
       <NavigationContainer>
         <BottomTabNav />
       </NavigationContainer>
+      <Toast config={toastConfig} />
     </View>
   )
 }
