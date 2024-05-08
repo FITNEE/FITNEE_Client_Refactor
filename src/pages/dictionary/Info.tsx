@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native'
 import { colors } from '@/libs/Colors'
 import DictionaryBottomSheet from '@/components/dictionary/BottomSheet'
 import { getGIF } from '@/utils/getImage'
-import AddtoRoutineModal from '@/components/dictionary/AddToRoutineModal'
+import AddtoRoutineModal from '@/components/dictionary/AddtoRoutineModal'
 
 export default function DictionaryInfo() {
   return (
