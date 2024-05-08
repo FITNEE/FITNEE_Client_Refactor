@@ -4,20 +4,23 @@ import Input from '@/components/onBoarding/Input'
 import KeyboardAvoidLayout from '@/components/onBoarding/KeyboardAvoidLayout'
 import Title from '@/components/onBoarding/Title'
 import { colors } from '@/libs/Colors'
+import { OnBoardingNavParams } from '@/navigators/OnBoardingNav'
 import { emailAtom } from '@/states/OnBoardingStates'
+import { StackScreenProps } from '@react-navigation/stack'
 import { useAtom } from 'jotai'
 import { useState } from 'react'
 import { Keyboard, KeyboardAvoidingView, Text, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
-export default function InputEmail() {
+type InputEmailProps = StackScreenProps<OnBoardingNavParams, 'OnBoardingInputEmail'>
+
+export default function InputEmail({ navigation }: InputEmailProps) {
   const [email, setEmail] = useAtom(emailAtom)
   const [isError, setIsError] = useState<boolean>(false)
   const [errorText, setErrorText] = useState<string>('')
 
   const onPressCompleteBtn = () => {
-    setIsError(true)
-    setErrorText('다시 시도해주세요.')
+    navigation.navigate('OnBoardingInputPassword', { createAccount: false })
   }
 
   return (
