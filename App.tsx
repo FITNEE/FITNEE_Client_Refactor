@@ -4,18 +4,22 @@ import { useFonts } from 'expo-font'
 import { useCallback } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import { View } from 'react-native'
+import Toast from 'react-native-toast-message'
+import { toastConfig } from '@/components/ToastMessage'
+
+SplashScreen.preventAutoHideAsync()
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
-    Black: require('./src/assets/fonts/Pretendard-Black.otf'),
-    Bold: require('./src/assets/fonts/Pretendard-Bold.otf'),
-    ExtraBold: require('./src/assets/fonts/Pretendard-ExtraBold.otf'),
-    ExtraLight: require('./src/assets/fonts/Pretendard-ExtraLight.otf'),
-    Light: require('./src/assets/fonts/Pretendard-Light.otf'),
-    Medium: require('./src/assets/fonts/Pretendard-Medium.otf'),
-    Regular: require('./src/assets/fonts/Pretendard-Regular.otf'),
-    SemiBold: require('./src/assets/fonts/Pretendard-SemiBold.otf'),
-    Thin: require('./src/assets/fonts/Pretendard-Thin.otf'),
+    Thin: require('./src/assets/fonts/Pretendard-Thin.otf'), // 100
+    ExtraLight: require('./src/assets/fonts/Pretendard-ExtraLight.otf'), //200
+    Light: require('./src/assets/fonts/Pretendard-Light.otf'), // 300
+    Regular: require('./src/assets/fonts/Pretendard-Regular.otf'), // 400
+    Medium: require('./src/assets/fonts/Pretendard-Medium.otf'), // 500
+    SemiBold: require('./src/assets/fonts/Pretendard-SemiBold.otf'), // 600
+    Bold: require('./src/assets/fonts/Pretendard-Bold.otf'), // 700
+    ExtraBold: require('./src/assets/fonts/Pretendard-ExtraBold.otf'), //800
+    Black: require('./src/assets/fonts/Pretendard-Black.otf'), // 900
   })
 
   const onLayoutRootView = useCallback(async () => {
@@ -33,6 +37,7 @@ export default function App() {
       <NavigationContainer>
         <BottomTabNav />
       </NavigationContainer>
+      <Toast config={toastConfig} />
     </View>
   )
 }

@@ -1,13 +1,25 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import Dictionary from "@/pages/Dictionary/Dictionary";
+import React from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
+import Main from '@/pages/dictionary/Dictionary'
+import Info from '@/pages/dictionary/Info'
 
-const Stack = createStackNavigator();
+export type DictionaryNavParams = {
+  DictionaryMain: undefined
+  DictionaryInfo: { exerciseId: number }
+}
+
+const Stack = createStackNavigator<DictionaryNavParams>()
 
 export default function DictionaryNav() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="DictionaryMain" component={Dictionary} />
+    <Stack.Navigator
+      screenOptions={{
+        headerBackTitleVisible: false,
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="DictionaryMain" component={Main} />
+      <Stack.Screen name="DictionaryInfo" component={Info} />
     </Stack.Navigator>
-  );
+  )
 }
