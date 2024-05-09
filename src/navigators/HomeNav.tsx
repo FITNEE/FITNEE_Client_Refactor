@@ -1,6 +1,7 @@
+import CreateRoutineNav from './CreateRoutineNav'
 import React, { useEffect } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import Home from '@/pages/Home/Home'
+import Home from '@/pages/home/Home'
 import { isTabVisibleAtom } from '@/states/GlobalStates'
 import { useAtom } from 'jotai'
 
@@ -14,8 +15,13 @@ export default function HomeNav() {
   }, [setIsTabVisible])
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="CreateRoutine" component={CreateRoutineNav} />
     </Stack.Navigator>
   )
 }

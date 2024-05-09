@@ -1,21 +1,21 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import MyPage from '../pages/myPage/MyPage'
-import Setting from '../pages/myPage/Setting'
-import UserInfo from '../pages/myPage/UserInfo'
-import EditUserInfo from '../pages/myPage/EditUserInfo'
+import MyPage from "@/pages/MyPage/MyPage"
+import Setting from '@/pages/myPage/Setting'
+import UserInfo from '@/pages/myPage/UserInfo'
+import EditUserInfo from '@/pages/myPage/EditUserInfo'
 import { TouchableOpacity } from 'react-native'
-import EditPW from '../pages/myPage/EditPW'
+import EditPW from '@/pages/myPage/EditPW'
 import SettingIcon from '../assets/images/SVGs/icon/Setting.svg'
 import Left from '../assets/images/SVGs/icon/Left.svg'
 import { colors } from '@/libs/Colors'
 import MyRoutineNav from './MyRoutine'
-import TermsOfService from '../pages/myPage/TermsOfService'
-import PrivacyPolicy from '../pages/myPage/PrivacyPolicy'
+import TermsOfService from '@/pages/myPage/TermsOfService'
+import PrivacyPolicy from '@/pages/myPage/PrivacyPolicy'
 import { useAtom } from 'jotai'
 import { isDarkModeAtom } from '@/states/GlobalStates'
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 export default function MyPageNav() {
   const [isDark] = useAtom(isDarkModeAtom)
@@ -133,5 +133,5 @@ export default function MyPageNav() {
         }}
       />
     </Stack.Navigator>
-  )
+  );
 }
