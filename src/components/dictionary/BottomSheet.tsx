@@ -1,30 +1,31 @@
 import styled from 'styled-components/native'
 import BottomSheet, {
+  BottomSheetBackdrop,
+  BottomSheetBackdropProps,
   BottomSheetScrollView,
   BottomSheetView,
 } from '@gorhom/bottom-sheet'
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { colors } from '@/libs/Colors'
 import AddIcon from '@/assets/images/SVGs/icon/Plus.svg'
 import { screenWidth } from '@/libs/Dimensions'
 import Process from './Process'
 import Caution from './Caution'
+import { useAtom } from 'jotai'
+import { ModalVisibilityAtom } from '@/states/DictionaryStates'
 
 const exerciseInfoList = [
   {
     title: '안장 높낮이 조절',
-    description:
-      '안장의 높이를 삼두 중앙보다 약간 위쪽과 같도록 맞춘 후 손잡이를 잡아주세요.',
+    description: '안장의 높이를 삼두 중앙보다 약간 위쪽과 같도록 맞춘 후 손잡이를 잡아주세요.',
   },
   {
     title: '안장 높낮이 조절',
-    description:
-      '안장의 높이를 삼두 중앙보다 약간 위쪽과 같도록 맞춘 후 손잡이를 잡아주세요.',
+    description: '안장의 높이를 삼두 중앙보다 약간 위쪽과 같도록 맞춘 후 손잡이를 잡아주세요.',
   },
   {
     title: '안장 높낮이 조절',
-    description:
-      '안장의 높이를 삼두 중앙보다 약간 위쪽과 같도록 맞춘 후 손잡이를 잡아주세요.',
+    description: '안장의 높이를 삼두 중앙보다 약간 위쪽과 같도록 맞춘 후 손잡이를 잡아주세요.',
   },
 ] //dummy
 const cautionList = [
@@ -35,14 +36,24 @@ const cautionList = [
 
 export default function DictionaryBottomSheet() {
   const snapPoints = useMemo(() => ['45%', '92%'], [])
+  const [, setIsModalVisible] = useAtom(ModalVisibilityAtom)
+
+  const showAddRoutineModal = () => {
+    setIsModalVisible(true)
+  }
+
+  const renderBackdrop = useCallback(
+    (props: BottomSheetBackdropProps) => <BottomSheetBackdrop {...props} pressBehavior="none" />,
+    [],
+  )
 
   return (
-    <BottomSheet snapPoints={snapPoints} index={0}>
+    <BottomSheet snapPoints={snapPoints} index={0} backdropComponent={renderBackdrop}>
       <BottomSheetView>
         <TopContainer>
           <PartText>어깨 | 측면 삼각근 | 머신</PartText>
           <NameText>사이드 레터럴 레이즈 머신</NameText>
-          <AddButton>
+          <AddButton onPress={showAddRoutineModal}>
             <AddIcon width={18} height={18} color={colors.main1} />
           </AddButton>
         </TopContainer>
@@ -55,12 +66,7 @@ export default function DictionaryBottomSheet() {
       <Content showsVerticalScrollIndicator={false}>
         <ProcessContainer>
           {exerciseInfoList.map((exerciseInfo, index) => (
-            <Process
-              index={index + 1}
-              title={exerciseInfo.title}
-              description={exerciseInfo.description}
-              key={index}
-            />
+            <Process index={index + 1} title={exerciseInfo.title} description={exerciseInfo.description} key={index} />
           ))}
         </ProcessContainer>
         <Caution description={cautionList} />
