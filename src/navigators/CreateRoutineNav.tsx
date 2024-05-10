@@ -18,6 +18,7 @@ export default function CreateRoutineNav() {
           fontSize: 16,
         },
         animationEnabled: false,
+        gestureEnabled: false,
       }}
     >
       <Stack.Screen

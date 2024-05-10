@@ -43,6 +43,24 @@ export default function DayRoutine() {
         { name: '데드리프트', set: 3 },
       ],
     },
+    {
+      day: '월',
+      parts: '하체, 코어',
+      exercises: [
+        { name: '데드리프트', set: 3 },
+        { name: '데드리프트', set: 3 },
+        { name: '데드리프트', set: 3 },
+      ],
+    },
+    {
+      day: '월',
+      parts: '하체, 코어',
+      exercises: [
+        { name: '데드리프트', set: 3 },
+        { name: '데드리프트', set: 3 },
+        { name: '데드리프트', set: 3 },
+      ],
+    },
   ])
   const [selectedID, setSelectedID] = useState<number>(0)
   const [isDark] = useAtom(isDarkModeAtom)
@@ -91,7 +109,6 @@ const Item = styled.TouchableOpacity`
   border-radius: 12px;
   align-items: center;
   justify-content: space-between;
-  margin-top: 8px;
 `
 const ItemTitle = styled.Text`
   font-size: 17px;
