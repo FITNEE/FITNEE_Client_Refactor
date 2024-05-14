@@ -20,7 +20,21 @@ export default function InputEmail({ navigation }: InputEmailProps) {
   const [errorText, setErrorText] = useState<string>('')
 
   const onPressCompleteBtn = () => {
-    navigation.navigate('OnBoardingInputPassword', { isCreateAccount: false })
+    if (checkEmailValidity()) {
+      setIsError(false)
+      navigation.navigate('OnBoardingInputPassword', { isCreateAccount: true })
+    } else {
+      setIsError(true)
+      setErrorText('올바르지 않은 이메일 형식이에요.')
+    }
+  }
+
+  const checkEmailValidity = () => {
+    const regex = new RegExp(
+      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])",
+    )
+    if (regex.test(email)) return true
+    return false
   }
 
   return (
