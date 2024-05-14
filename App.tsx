@@ -4,10 +4,14 @@ import { useFonts } from 'expo-font'
 import { useCallback } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import { View } from 'react-native'
+import OnBoardingNav from '@/navigators/OnBoardingNav'
+import { useAtom } from 'jotai'
+import { isLoggedInAtom } from '@/states/GlobalStates'
 
 SplashScreen.preventAutoHideAsync()
 
 export default function App() {
+  const [isLoggedIn] = useAtom(isLoggedInAtom)
   const [fontsLoaded, fontError] = useFonts({
     Thin: require('./src/assets/fonts/Pretendard-Thin.otf'), // 100
     ExtraLight: require('./src/assets/fonts/Pretendard-ExtraLight.otf'), //200
@@ -32,9 +36,7 @@ export default function App() {
 
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <NavigationContainer>
-        <BottomTabNav />
-      </NavigationContainer>
+      <NavigationContainer>{isLoggedIn ? <BottomTabNav /> : <OnBoardingNav />}</NavigationContainer>
     </View>
   )
 }

@@ -11,6 +11,7 @@ import { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 import BackIcon from '@/assets/images/SVGs/icon/LeftArrow.svg'
+import { isLoggedInAtom } from '@/states/GlobalStates'
 
 type InputPasswordProps = StackScreenProps<OnBoardingNavParams, 'OnBoardingInputPassword'>
 
@@ -20,6 +21,7 @@ export default function InputPassword({ navigation, route }: InputPasswordProps)
   const [password, setPassword] = useAtom(passwordAtom)
   const [isError, setIsError] = useState<boolean>(false)
   const [errorText, setErrorText] = useState<string>('')
+  const [, setIsLoggedIn] = useAtom(isLoggedInAtom)
 
   const onPressCompleteBtn = () => {
     if (isCreateAccount) {
