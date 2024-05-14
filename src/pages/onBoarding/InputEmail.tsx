@@ -35,6 +35,7 @@ export default function InputEmail({ navigation }: InputEmailProps) {
             isError={isError}
             errorText={errorText}
             isPassword={false}
+            onPressEnter={onPressCompleteBtn}
           />
         </TopContainer>
         <TextButton text="확인" disabled={email.length === 0} onPress={onPressCompleteBtn} />

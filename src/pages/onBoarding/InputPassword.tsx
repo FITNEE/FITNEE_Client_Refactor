@@ -22,8 +22,10 @@ export default function InputPassword({ navigation, route }: InputPasswordProps)
   const [errorText, setErrorText] = useState<string>('')
 
   const onPressCompleteBtn = () => {
-    setIsError(true)
-    setErrorText('다시 시도해주세요.')
+    if (isCreateAccount) {
+    } else {
+      setIsLoggedIn(true)
+    }
   }
 
   const onPressPrevBtn = () => navigation.goBack()
@@ -48,6 +50,7 @@ export default function InputPassword({ navigation, route }: InputPasswordProps)
             isError={isError}
             errorText={errorText}
             isPassword={true}
+            onPressEnter={onPressCompleteBtn}
           />
         </TopContainer>
         <TextButton

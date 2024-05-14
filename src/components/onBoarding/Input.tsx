@@ -8,6 +8,7 @@ interface InputProps {
   isError: boolean
   errorText: string
   isPassword: boolean
+  onPressEnter: () => void
 }
 
 export default function Input({
@@ -17,6 +18,7 @@ export default function Input({
   isError = false,
   errorText,
   isPassword = false,
+  onPressEnter,
 }: InputProps) {
   return (
     <Container>
@@ -29,6 +31,7 @@ export default function Input({
         secureTextEntry={isPassword}
         autoCapitalize="none"
         style={{ borderColor: isError ? colors.red : 'transparent' }}
+        onSubmitEditing={onPressEnter}
       />
     </Container>
   )
