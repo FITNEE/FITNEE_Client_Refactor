@@ -37,7 +37,7 @@ export default function ScreenLayout({
   )
 }
 
-export const ScreenContainer = styled.SafeAreaView`
+const ScreenContainer = styled.SafeAreaView`
   flex: 1;
   width: 100%;
 `

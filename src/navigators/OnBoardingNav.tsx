@@ -5,7 +5,7 @@ import InputPassword from '@/pages/onBoarding/InputPassword'
 
 export type OnBoardingNavParams = {
   OnBoardingInputEmail: undefined
-  OnBoardingInputPassword: { createAccount: boolean }
+  OnBoardingInputPassword: { isCreateAccount: boolean }
 }
 
 const Stack = createStackNavigator<OnBoardingNavParams>()

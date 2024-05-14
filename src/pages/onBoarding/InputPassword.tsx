@@ -15,7 +15,7 @@ import BackIcon from '@/assets/images/SVGs/icon/LeftArrow.svg'
 type InputPasswordProps = StackScreenProps<OnBoardingNavParams, 'OnBoardingInputPassword'>
 
 export default function InputPassword({ navigation, route }: InputPasswordProps) {
-  const createAccount = route.params.createAccount
+  const isCreateAccount = route.params.isCreateAccount
 
   const [password, setPassword] = useAtom(passwordAtom)
   const [isError, setIsError] = useState<boolean>(false)
@@ -38,7 +38,7 @@ export default function InputPassword({ navigation, route }: InputPasswordProps)
         </PrevBtnContainer>
         <TopContainer>
           <Title
-            title={createAccount ? '환영해요! 계정을 생성할게요.' : '다시 만나 반가워요!'}
+            title={isCreateAccount ? '환영해요! 계정을 생성할게요.' : '다시 만나 반가워요!'}
             subTitle="비밀번호를 입력해주세요."
           />
           <Input
@@ -51,7 +51,7 @@ export default function InputPassword({ navigation, route }: InputPasswordProps)
           />
         </TopContainer>
         <TextButton
-          text={createAccount ? '계정 생성' : '로그인'}
+          text={isCreateAccount ? '계정 생성' : '로그인'}
           disabled={password.length === 0}
           onPress={onPressCompleteBtn}
         />
