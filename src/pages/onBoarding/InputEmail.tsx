@@ -20,7 +20,7 @@ export default function InputEmail({ navigation }: InputEmailProps) {
   const [errorText, setErrorText] = useState<string>('')
 
   const onPressCompleteBtn = () => {
-    navigation.navigate('OnBoardingInputPassword', { createAccount: false })
+    navigation.navigate('OnBoardingInputPassword', { isCreateAccount: false })
   }
 
   return (

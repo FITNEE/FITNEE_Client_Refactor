@@ -24,6 +24,7 @@ export default function Input({
     <Container>
       <Message>{isError ? errorText : ''}</Message>
       <InputWrapper
+        autoFocus
         placeholder={placeholder}
         placeholderTextColor={colors.grey5}
         value={value}
