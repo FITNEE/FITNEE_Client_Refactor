@@ -4,10 +4,14 @@ import styled from 'styled-components/native'
 import { colors } from '@/libs/Colors'
 import { useAtom } from 'jotai'
 import { isDarkModeAtom } from '@/states/GlobalStates'
-import { Button } from '@/components/myPage/TextButton'
 import ScreenLayout from '@/components/ScreenLayout'
+import TextButton from '@/components/TextButton'
+import { StackScreenProps } from '@react-navigation/stack'
+import { MyPageNavParams } from '@/navigators/MyPageNav'
 
-export default function EditPW({ navigation }: any) {
+type EditPWProps = StackScreenProps<MyPageNavParams, 'EditPW'>
+
+export default function EditPW({ navigation }: EditPWProps) {
   const [isDark] = useAtom(isDarkModeAtom)
 
   const [rewrittenPW, setRewrittenPW] = useState('')
@@ -168,15 +172,15 @@ export default function EditPW({ navigation }: any) {
             </StatusText>
           </InputContainer>
           {!checking ? (
-            <Button onPress={() => checkPW()} enabled={rewrittenPW != ''} text={'확인'} />
+            <TextButton onPress={() => checkPW()} disabled={rewrittenPW == ''} text={'확인'} />
           ) : visibleErrorNewPW ? (
-            <Button
-              enabled={visibleErrorNewPW && !errorNewPW && rewrittenNewPW == newPW}
+            <TextButton
               onPress={() => handlePress()}
+              disabled={!visibleErrorNewPW || errorNewPW || rewrittenNewPW != newPW}
               text={'새 비밀번호 저장'}
             />
           ) : (
-            <Button onPress={() => checkNewPW()} enabled={newPW != ''} text={'확인'} />
+            <TextButton onPress={() => checkNewPW()} disabled={newPW == ''} text={'확인'} />
           )}
         </Container>
       </TouchableWithoutFeedback>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import MyPage from "@/pages/MyPage/MyPage"
+import MyPage from '@/pages/myPage/MyPage'
 import Setting from '@/pages/myPage/Setting'
 import UserInfo from '@/pages/myPage/UserInfo'
 import EditUserInfo from '@/pages/myPage/EditUserInfo'
@@ -9,13 +9,22 @@ import EditPW from '@/pages/myPage/EditPW'
 import SettingIcon from '../assets/images/SVGs/icon/Setting.svg'
 import Left from '../assets/images/SVGs/icon/Left.svg'
 import { colors } from '@/libs/Colors'
-import MyRoutineNav from './MyRoutine'
 import TermsOfService from '@/pages/myPage/TermsOfService'
 import PrivacyPolicy from '@/pages/myPage/PrivacyPolicy'
 import { useAtom } from 'jotai'
 import { isDarkModeAtom } from '@/states/GlobalStates'
 
-const Stack = createStackNavigator();
+export type MyPageNavParams = {
+  MyPage: undefined
+  Setting: undefined
+  UserInfo: { showToast: boolean; toastMessage: string }
+  EditUserInfo: undefined
+  EditPW: undefined
+  PrivacyPolicy: undefined
+  TermsOfService: undefined
+}
+
+const Stack = createStackNavigator<MyPageNavParams>()
 
 export default function MyPageNav() {
   const [isDark] = useAtom(isDarkModeAtom)
@@ -124,14 +133,6 @@ export default function MyPageNav() {
           ),
         })}
       />
-      <Stack.Screen
-        name="MyRoutineNav"
-        component={MyRoutineNav}
-        options={{
-          headerShown: false,
-          headerBackTitleVisible: false,
-        }}
-      />
     </Stack.Navigator>
-  );
+  )
 }

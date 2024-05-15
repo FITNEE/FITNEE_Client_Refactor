@@ -11,7 +11,10 @@ import { useAtom } from 'jotai'
 import { isDarkModeAtom, isLoggedInAtom, isTabVisibleAtom } from '@/states/GlobalStates'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import ScreenLayout from '@/components/ScreenLayout'
+import { StackScreenProps } from '@react-navigation/stack'
+import { MyPageNavParams } from '@/navigators/MyPageNav'
 
+type SettingProps = StackScreenProps<MyPageNavParams, 'Setting'>
 interface UserInfoData {
   birthYear: number
   userId: string
@@ -19,7 +22,7 @@ interface UserInfoData {
   gender: number
 }
 
-export default function Setting({ navigation }: any) {
+export default function Setting({ navigation }: SettingProps) {
   const isFocused = useIsFocused()
   const [loggedIn, setLoggedIn] = useAtom(isLoggedInAtom)
   const [isDark] = useAtom(isDarkModeAtom)
@@ -78,7 +81,7 @@ export default function Setting({ navigation }: any) {
       <Container isDark={isDark}>
         <Profile
           onPress={() => {
-            navigation.navigate('UserInfo')
+            navigation.navigate('UserInfo', { showToast: false, toastMessage: '' })
           }}
         >
           <ProfileInfo>

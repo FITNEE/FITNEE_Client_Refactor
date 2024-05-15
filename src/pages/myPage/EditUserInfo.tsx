@@ -10,7 +10,10 @@ import ProfileWoman from '../../assets/images/SVGs/icon/ProfileWoman.svg'
 import { useAtom } from 'jotai'
 import { isDarkModeAtom } from '@/states/GlobalStates'
 import ScreenLayout from '@/components/ScreenLayout'
+import { StackScreenProps } from '@react-navigation/stack'
+import { MyPageNavParams } from '@/navigators/MyPageNav'
 
+type EditUserInfoProps = StackScreenProps<MyPageNavParams, 'EditUserInfo'>
 interface UserInfoData {
   birthYear: number
   userId: string
@@ -18,7 +21,7 @@ interface UserInfoData {
   gender: number
 }
 
-export default function EditUserInfo({ navigation }: any) {
+export default function EditUserInfo({ navigation }: EditUserInfoProps) {
   const [isDark] = useAtom(isDarkModeAtom)
 
   const [check, setCheck] = useState<boolean>(false)
