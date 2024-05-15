@@ -5,8 +5,6 @@ import { colors } from '@/libs/Colors'
 import Mini_dumbbell from '../../assets/images/SVGs/icon/Mini_Dumbbell.svg'
 import Mini_shoes from '../../assets/images/SVGs/icon/Mini_Shoes.svg'
 import Mini_timer from '../../assets/images/SVGs/icon/Mini_Timer.svg'
-import { isDarkModeAtom } from '@/states/GlobalStates'
-import { useAtom } from 'jotai'
 
 interface WeekDataProps {
   startAndEndExercise: {
@@ -26,8 +24,6 @@ interface WeekDataProps {
 }
 
 export default function Analysis(props: { weekData: WeekDataProps }) {
-  const [isDark] = useAtom(isDarkModeAtom)
-
   const weekData: WeekDataProps = props.weekData
 
   // 오늘이 몇주차인지
@@ -77,40 +73,35 @@ export default function Analysis(props: { weekData: WeekDataProps }) {
     <Container>
       <TotalChart weekData={slicedWeekData} />
       <Exercise>
-        <Title isDark={isDark}>운동 현황</Title>
+        <Title>운동 현황</Title>
         <Block>
-          <Mini_dumbbell
-            style={{ marginRight: 16 }}
-            width={40}
-            height={40}
-            color={isDark ? colors.grey8 : colors.grey1}
-          />
+          <Mini_dumbbell style={{ marginRight: 16 }} width={40} height={40} color={colors.grey1} />
           <BlockContent>
             <Data>
-              <CircleText isDark={isDark}>{calorie} </CircleText>
-              <CircleMiniText isDark={isDark}>kcal</CircleMiniText>
+              <CircleText>{calorie} </CircleText>
+              <CircleMiniText>kcal</CircleMiniText>
             </Data>
-            <CircleTitle isDark={isDark}>최근 일주일 간 소모한 칼로리</CircleTitle>
+            <CircleTitle>최근 일주일 간 소모한 칼로리</CircleTitle>
           </BlockContent>
         </Block>
         <Block>
-          <Mini_shoes style={{ marginRight: 16 }} width={40} height={40} color={isDark ? colors.grey8 : colors.grey1} />
+          <Mini_shoes style={{ marginRight: 16 }} width={40} height={40} color={colors.grey1} />
           <BlockContent>
             <Data>
-              <CircleText isDark={isDark}>{kilometer} </CircleText>
-              <CircleMiniText isDark={isDark}>km</CircleMiniText>
+              <CircleText>{kilometer} </CircleText>
+              <CircleMiniText>km</CircleMiniText>
             </Data>
-            <CircleTitle isDark={isDark}>최근 일주일 간 뛴 거리</CircleTitle>
+            <CircleTitle>최근 일주일 간 뛴 거리</CircleTitle>
           </BlockContent>
         </Block>
         <Block>
-          <Mini_timer style={{ marginRight: 16 }} width={40} height={40} color={isDark ? colors.grey8 : colors.grey1} />
+          <Mini_timer style={{ marginRight: 16 }} width={40} height={40} color={colors.grey1} />
           <BlockContent>
             <Data>
-              <CircleText isDark={isDark}>{hour} </CircleText>
-              <CircleMiniText isDark={isDark}>Hour</CircleMiniText>
+              <CircleText>{hour} </CircleText>
+              <CircleMiniText>Hour</CircleMiniText>
             </Data>
-            <CircleTitle isDark={isDark}>총 누적 운동 시간</CircleTitle>
+            <CircleTitle>총 누적 운동 시간</CircleTitle>
           </BlockContent>
         </Block>
       </Exercise>
@@ -139,24 +130,24 @@ const Title = styled.Text`
   font-family: 'SemiBold';
   line-height: 32px;
   margin: 0px 24px 16px 24px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `
 const CircleText = styled.Text`
   font-size: 24px;
   font-family: 'SemiBold';
   line-height: 33.6px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `
 const CircleMiniText = styled.Text`
   font-size: 13px;
   font-family: 'Regular';
   line-height: 19.5px;
   padding-top: 10px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `
 const CircleTitle = styled.Text`
   font-size: 13px;
   font-family: 'Regular';
   line-height: 19.5px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `

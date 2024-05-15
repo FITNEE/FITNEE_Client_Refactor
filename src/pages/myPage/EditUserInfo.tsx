@@ -7,8 +7,6 @@ import Left from '../../assets/images/SVGs/icon/Left.svg'
 import { Alert } from 'react-native'
 import ProfileMan from '../../assets/images/SVGs/icon/ProfileMan.svg'
 import ProfileWoman from '../../assets/images/SVGs/icon/ProfileWoman.svg'
-import { useAtom } from 'jotai'
-import { isDarkModeAtom } from '@/states/GlobalStates'
 import ScreenLayout from '@/components/ScreenLayout'
 import { StackScreenProps } from '@react-navigation/stack'
 import { MyPageNavParams } from '@/navigators/MyPageNav'
@@ -22,8 +20,6 @@ interface UserInfoData {
 }
 
 export default function EditUserInfo({ navigation }: EditUserInfoProps) {
-  const [isDark] = useAtom(isDarkModeAtom)
-
   const [check, setCheck] = useState<boolean>(false)
   const [error, setError] = useState<boolean>(true)
   const [userInfo, setUserInfo] = useState<UserInfoData>({
@@ -129,7 +125,7 @@ export default function EditUserInfo({ navigation }: EditUserInfoProps) {
             ])
           }}
         >
-          <Left style={{ marginLeft: 24 }} width={24} height={24} color={isDark ? colors.white : colors.black} />
+          <Left style={{ marginLeft: 24 }} width={24} height={24} color={colors.black} />
         </TouchableOpacity>
       ),
       headerRight: () => (
@@ -148,7 +144,7 @@ export default function EditUserInfo({ navigation }: EditUserInfoProps) {
             style={{
               fontSize: 17,
               fontFamily: 'SemiBold',
-              color: enabled ? colors.main1 : isDark ? colors.grey7 : colors.grey2,
+              color: enabled ? colors.main1 : colors.grey2,
             }}
           >
             저장
@@ -165,21 +161,20 @@ export default function EditUserInfo({ navigation }: EditUserInfoProps) {
           Keyboard.dismiss()
         }}
       >
-        <Container isDark={isDark}>
+        <Container>
           <Profile>
             {getGender == 1 ? (
-              <ProfileMan width={88} height={88} color={isDark ? colors.grey7 : colors.grey2} />
+              <ProfileMan width={88} height={88} color={colors.grey2} />
             ) : (
-              <ProfileWoman width={88} height={88} color={isDark ? colors.grey7 : colors.grey2} />
+              <ProfileWoman width={88} height={88} color={colors.grey2} />
             )}
           </Profile>
           <InputContainer>
             <InputRed
-              isDark={isDark}
               error={error}
               check={check}
               style={{
-                borderColor: check ? (error ? colors.red : colors.green) : isDark ? colors.black : colors.grey2,
+                borderColor: check ? (error ? colors.red : colors.green) : colors.grey2,
               }}
             >
               <InputBlock
@@ -187,15 +182,14 @@ export default function EditUserInfo({ navigation }: EditUserInfoProps) {
                 autoFocus
                 onChangeText={(text: string) => setNewNickname(text)}
                 placeholder={getUserName}
-                placeholderTextColor={isDark ? colors.grey8 : colors.grey6}
-                isDark={isDark}
+                placeholderTextColor={colors.grey6}
               />
             </InputRed>
-            <CheckButton enabled onPress={change} isDark={isDark}>
-              <CheckButtonText isDark={isDark}>중복 확인</CheckButtonText>
+            <CheckButton enabled onPress={change}>
+              <CheckButtonText>중복 확인</CheckButtonText>
             </CheckButton>
           </InputContainer>
-          <StatusText error={error} check={check} isDark={isDark}>
+          <StatusText error={error} check={check}>
             {check
               ? error
                 ? checkNick.length < 2
@@ -211,7 +205,7 @@ export default function EditUserInfo({ navigation }: EditUserInfoProps) {
 }
 
 const Container = styled.View`
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.grey9 : colors.white)};
+  background-color: ${colors.white};
   height: 100%;
   padding: 0px 24px;
   align-items: center;
@@ -230,8 +224,8 @@ const InputRed = styled.View`
 `
 const InputBlock = styled.TextInput`
   width: 238px;
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.black : colors.grey1)};
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  background-color: ${colors.grey1};
+  color: ${colors.black};
   padding: 0px 16px;
   height: 46px;
   border-radius: 8px;
@@ -249,8 +243,8 @@ const StatusText = styled.Text`
   margin-bottom: 20px;
   margin-right: 8px;
   font-weight: 300;
-  color: ${(props: { isDark: boolean; check: boolean; error: boolean }) =>
-    props.check ? (props.error ? colors.red : colors.green) : props.isDark ? colors.grey8 : colors.grey2};
+  color: ${(props: { check: boolean; error: boolean }) =>
+    props.check ? (props.error ? colors.red : colors.green) : colors.grey2};
 `
 const CheckButton = styled.TouchableOpacity`
   width: 79px;

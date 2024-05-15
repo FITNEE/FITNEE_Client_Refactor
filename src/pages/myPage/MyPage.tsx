@@ -6,7 +6,7 @@ import { colors } from '@/libs/Colors'
 import { useIsFocused } from '@react-navigation/native'
 import ScreenLayout from '@/components/ScreenLayout'
 import { useAtom } from 'jotai'
-import { isDarkModeAtom, isTabVisibleAtom } from '@/states/GlobalStates'
+import { isTabVisibleAtom } from '@/states/GlobalStates'
 
 interface weekDataProps {
   startAndEndExercise: {
@@ -40,7 +40,6 @@ interface HealthCheckResult {
 
 export default function MyPage() {
   const isFocus = useIsFocused()
-  const [isDark] = useAtom(isDarkModeAtom)
   const [, setIsTabVisible] = useAtom(isTabVisibleAtom)
 
   useEffect(() => {
@@ -643,7 +642,7 @@ export default function MyPage() {
   const [showRecords, SetShowRecords] = useState(true)
 
   const SelectedTextStyle = {
-    color: isDark ? colors.white : colors.black,
+    color: colors.black,
   }
   const SelectedBoxStyle = {
     borderBottomWidth: 2,
@@ -652,7 +651,7 @@ export default function MyPage() {
 
   return (
     <ScreenLayout>
-      <Container isDark={isDark}>
+      <Container>
         <Choice>
           <ChoiceButton1
             onPress={() => {
@@ -660,9 +659,7 @@ export default function MyPage() {
             }}
             style={showRecords && SelectedBoxStyle}
           >
-            <ChoiceText isDark={isDark} style={showRecords && SelectedTextStyle}>
-              운동 기록
-            </ChoiceText>
+            <ChoiceText style={showRecords && SelectedTextStyle}>운동 기록</ChoiceText>
           </ChoiceButton1>
           <ChoiceButton2
             onPress={() => {
@@ -670,9 +667,7 @@ export default function MyPage() {
             }}
             style={!showRecords && SelectedBoxStyle}
           >
-            <ChoiceText isDark={isDark} style={!showRecords && SelectedTextStyle}>
-              운동 분석 및 현황
-            </ChoiceText>
+            <ChoiceText style={!showRecords && SelectedTextStyle}>운동 분석 및 현황</ChoiceText>
           </ChoiceButton2>
         </Choice>
         {showRecords && <Records getDayHealth={getDayHealth} getMyPageData={getMyPageData} />}
@@ -683,14 +678,14 @@ export default function MyPage() {
 }
 
 const Container = styled.ScrollView`
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.d_background : colors.l_background)};
+  background-color: ${colors.l_background};
 `
 const ChoiceText = styled.Text`
   font-size: 17px;
   font-style: normal;
   font-family: 'SemiBold';
   line-height: 25.5px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.grey3 : colors.grey6)};
+  color: ${colors.grey6};
 `
 const Choice = styled.View`
   margin-top: 10px;

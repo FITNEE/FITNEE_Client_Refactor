@@ -5,8 +5,6 @@ import styled from 'styled-components/native'
 import CalendarView from './CalendarView'
 import { colors } from '@/libs/Colors'
 import Check from '../../assets/images/SVGs/icon/Check.svg'
-import { isDarkModeAtom } from '@/states/GlobalStates'
-import { useAtom } from 'jotai'
 
 interface HealthCheckResult {
   isSuccess: boolean
@@ -27,8 +25,6 @@ interface RecordsProps {
 }
 
 export default function Records(props: RecordsProps) {
-  const [isDark] = useAtom(isDarkModeAtom)
-
   const [now, setNow] = useState<Date>(new Date(Date.now() + 9 * 60 * 60 * 1000))
   const date = parseInt(now.toISOString().substring(8, 10))
   const resultMonth = now.getMonth() + 1
@@ -82,7 +78,7 @@ export default function Records(props: RecordsProps) {
 
   const exercise = totalExercise?.map(comment => (
     <RecTextLine>
-      <ListText isDark={isDark}>{comment}</ListText>
+      <ListText>{comment}</ListText>
       <Check width={20} height={20} color={colors.white} />
     </RecTextLine>
   ))
@@ -92,9 +88,9 @@ export default function Records(props: RecordsProps) {
       <CalendarBox>
         <CalendarView dayFunction={dayLoad} exerciseDays={exerciseDays} setMonth={setMonth} />
       </CalendarBox>
-      <Bar isDark={isDark} />
+      <Bar />
       <Exercise>
-        <Title isDark={isDark}>
+        <Title>
           {resultMonth}월 {date}일 완료한 운동
         </Title>
         <Circles>
@@ -104,32 +100,32 @@ export default function Records(props: RecordsProps) {
               radius={40}
               borderWidth={2}
               color={colors.main1}
-              shadowColor={isDark ? colors.grey8 : colors.grey1}
-              bgColor={isDark ? colors.grey9 : colors.white}
+              shadowColor={colors.grey1}
+              bgColor={colors.white}
             >
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <CircleText isDark={isDark}>{totalMinute}</CircleText>
-                <MiniText isDark={isDark}> 분</MiniText>
+                <CircleText>{totalMinute}</CircleText>
+                <MiniText> 분</MiniText>
               </View>
             </PercentageCircle>
-            <CircleTitle isDark={isDark}>소요시간</CircleTitle>
+            <CircleTitle>소요시간</CircleTitle>
           </CircleContent>
           <CircleContent>
-            <Circle isDark={isDark}>
-              <CircleText isDark={isDark}>{totalWeight}</CircleText>
-              <MiniText isDark={isDark}> kg</MiniText>
+            <Circle>
+              <CircleText>{totalWeight}</CircleText>
+              <MiniText> kg</MiniText>
             </Circle>
-            <CircleTitle isDark={isDark}>오늘 든 무게</CircleTitle>
+            <CircleTitle>오늘 든 무게</CircleTitle>
           </CircleContent>
           <CircleContent>
-            <Circle isDark={isDark}>
-              <CircleText isDark={isDark}>{totalCalories}</CircleText>
-              <MiniText isDark={isDark}> Kcal</MiniText>
+            <Circle>
+              <CircleText>{totalCalories}</CircleText>
+              <MiniText> Kcal</MiniText>
             </Circle>
-            <CircleTitle isDark={isDark}>소모 칼로리</CircleTitle>
+            <CircleTitle>소모 칼로리</CircleTitle>
           </CircleContent>
         </Circles>
-        {totalExercise.length != 0 && <List isDark={isDark}>{exercise}</List>}
+        {totalExercise.length != 0 && <List>{exercise}</List>}
       </Exercise>
     </Container>
   )
@@ -163,20 +159,20 @@ const RecTextLine = styled.View`
 `
 const Bar = styled.View`
   height: 16px;
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.black : colors.grey1)};
+  background-color: ${colors.grey1};
 `
 const Title = styled.Text`
   font-size: 17px;
   font-family: 'SemiBold';
   line-height: 25.5px;
   margin: 0px 24px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `
 const Circle = styled.View`
   width: 80px;
   height: 80px;
   border-radius: 40px;
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.grey8 : colors.grey1)};
+  background-color: ${colors.grey1};
   align-items: center;
   justify-content: center;
   flex-direction: row;
@@ -186,18 +182,18 @@ const CircleText = styled.Text`
   font-size: 20px;
   font-family: 'SemiBold';
   line-height: 32px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `
 const CircleTitle = styled.Text`
   text-align: center;
   font-size: 10px;
   font-family: 'Regular';
   line-height: 15px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `
 const List = styled.View`
   border-radius: 12px;
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.grey8 : colors.grey1)};
+  background-color: ${colors.grey1};
   margin: 0px 32px;
   padding: 16px;
   gap: 7px;
@@ -207,7 +203,7 @@ const ListText = styled.Text`
   font-style: normal;
   font-family: 'Regular';
   line-height: 19.5px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `
 const MiniText = styled.Text`
   font-size: 10px;
@@ -215,7 +211,7 @@ const MiniText = styled.Text`
   font-family: 'SemiBold';
   padding-top: 4px;
   line-height: 32px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `
 const CalendarBox = styled.View`
   padding-left: 16px;

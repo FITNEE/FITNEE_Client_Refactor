@@ -8,7 +8,7 @@ import CustomSwitch from '../../components/myPage/CustomSwitch'
 import ProfileMan from '../../assets/images/SVGs/icon/ProfileMan.svg'
 import ProfileWoman from '../../assets/images/SVGs/icon/ProfileWoman.svg'
 import { useAtom } from 'jotai'
-import { isDarkModeAtom, isLoggedInAtom, isTabVisibleAtom } from '@/states/GlobalStates'
+import { isLoggedInAtom, isTabVisibleAtom } from '@/states/GlobalStates'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import ScreenLayout from '@/components/ScreenLayout'
 import { StackScreenProps } from '@react-navigation/stack'
@@ -26,7 +26,6 @@ interface UserInfoData {
 export default function Setting({ navigation }: SettingProps) {
   const isFocused = useIsFocused()
   const [loggedIn, setLoggedIn] = useAtom(isLoggedInAtom)
-  const [isDark] = useAtom(isDarkModeAtom)
   const [isTabVisible, setIsTabVisible] = useAtom(isTabVisibleAtom)
 
   useEffect(() => {
@@ -79,7 +78,7 @@ export default function Setting({ navigation }: SettingProps) {
 
   return (
     <ScreenLayout>
-      <Container isDark={isDark}>
+      <Container>
         <Profile
           onPress={() => {
             navigation.navigate('UserInfo', { showToast: false, toastMessage: '' })
@@ -87,33 +86,23 @@ export default function Setting({ navigation }: SettingProps) {
         >
           <ProfileInfo>
             {getGender == 1 ? (
-              <ProfileMan
-                style={{ marginRight: 8 }}
-                width={40}
-                height={40}
-                color={isDark ? colors.grey7 : colors.grey2}
-              />
+              <ProfileMan style={{ marginRight: 8 }} width={40} height={40} color={colors.grey2} />
             ) : (
-              <ProfileWoman
-                style={{ marginRight: 8 }}
-                width={40}
-                height={40}
-                color={isDark ? colors.grey7 : colors.grey2}
-              />
+              <ProfileWoman style={{ marginRight: 8 }} width={40} height={40} color={colors.grey2} />
             )}
             <ProfileContents>
-              <Name isDark={isDark}>{getUserName}</Name>
+              <Name>{getUserName}</Name>
             </ProfileContents>
           </ProfileInfo>
           <Right width={20} height={20} color={colors.grey7} />
         </Profile>
         <ModeView>
-          <BlockText isDark={isDark}>다크화면 모드</BlockText>
+          <BlockText>다크화면 모드</BlockText>
           <BlockContent>
             <CustomSwitch />
           </BlockContent>
         </ModeView>
-        <Bar isDark={isDark} />
+        <Bar />
         <PremiumBlock>
           <PremiumBack source={require('../../assets/images/PNGs/MyPageBanner.png')}>
             <ComingBox>
@@ -123,7 +112,6 @@ export default function Setting({ navigation }: SettingProps) {
           </PremiumBack>
         </PremiumBlock>
         <Block
-          isDark={isDark}
           onPress={() => {
             Alert.alert('루틴을 다시 생성할까요?', '현재 이용 중인 루틴은 삭제되며\n다시 불러올 수 없습니다.', [
               {
@@ -139,22 +127,21 @@ export default function Setting({ navigation }: SettingProps) {
             ])
           }}
         >
-          <BlockText isDark={isDark}>루틴 재설정</BlockText>
+          <BlockText>루틴 재설정</BlockText>
         </Block>
-        <Block isDark={isDark} onPress={() => navigation.navigate('PrivacyPolicy')}>
-          <BlockText isDark={isDark}>개인정보 처리방침</BlockText>
+        <Block onPress={() => navigation.navigate('PrivacyPolicy')}>
+          <BlockText>개인정보 처리방침</BlockText>
         </Block>
-        <Block isDark={isDark} onPress={() => navigation.navigate('TermsOfService')}>
-          <BlockText isDark={isDark}>서비스 이용약관</BlockText>
+        <Block onPress={() => navigation.navigate('TermsOfService')}>
+          <BlockText>서비스 이용약관</BlockText>
         </Block>
         <Block
-          isDark={isDark}
           onPress={() => {
             Logout()
             navigation.dispatch(CommonActions.reset({ index: 0, routes: [{ name: 'Setting' }] }))
           }}
         >
-          <BlockText isDark={isDark}>로그아웃</BlockText>
+          <BlockText>로그아웃</BlockText>
         </Block>
       </Container>
     </ScreenLayout>
@@ -194,36 +181,35 @@ const BlockContent = styled.View`
   margin-right: 0;
 `
 const Container = styled.View`
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.d_background : colors.l_background)};
+  background-color: ${colors.l_background};
   height: 100%;
 `
 const Bar = styled.View`
   height: 16px;
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.black : colors.grey1)};
+  background-color: ${colors.grey1};
 `
 const Name = styled.Text`
   font-size: 17px;
   font-style: normal;
   font-family: 'SemiBold';
   line-height: 25.5px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `
 const Block = styled.TouchableOpacity`
   padding: 19px 24px;
   flex-direction: row;
   align-items: center;
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.d_background : colors.l_background)};
+  background-color: ${colors.l_background};
 `
 const BlockText = styled.Text`
   font-size: 17px;
   font-style: normal;
   font-family: 'Regular';
   line-height: 25.5px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `
 
 const PremiumBlock = styled.View`
-  //height: 128px;
   padding: 16px 24px;
   padding-top: 20px;
   justify-content: center;
@@ -231,12 +217,10 @@ const PremiumBlock = styled.View`
 `
 const PremiumBack = styled.ImageBackground`
   width: 100%;
-  //height: 92px;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
   overflow: hidden;
-  //gap: 8px;
   padding: 16px 0px 16px 0px;
 `
 const ComingBox = styled.View`

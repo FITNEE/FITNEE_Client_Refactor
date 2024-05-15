@@ -11,8 +11,6 @@ import Left from '../assets/images/SVGs/icon/Left.svg'
 import { colors } from '@/libs/Colors'
 import TermsOfService from '@/pages/myPage/TermsOfService'
 import PrivacyPolicy from '@/pages/myPage/PrivacyPolicy'
-import { useAtom } from 'jotai'
-import { isDarkModeAtom } from '@/states/GlobalStates'
 
 export type MyPageNavParams = {
   MyPage: undefined
@@ -27,8 +25,6 @@ export type MyPageNavParams = {
 const Stack = createStackNavigator<MyPageNavParams>()
 
 export default function MyPageNav() {
-  const [isDark] = useAtom(isDarkModeAtom)
-
   return (
     <Stack.Navigator
       screenOptions={{
@@ -37,8 +33,8 @@ export default function MyPageNav() {
           fontSize: 17,
           lineHeight: 25.5,
         },
-        headerStyle: { backgroundColor: isDark ? colors.grey9 : colors.white },
-        headerTintColor: isDark ? colors.white : colors.black,
+        headerStyle: { backgroundColor: colors.white },
+        headerTintColor: colors.black,
         headerShadowVisible: false,
       }}
     >
@@ -49,12 +45,7 @@ export default function MyPageNav() {
           headerTitle: '',
           headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
-              <SettingIcon
-                style={{ marginRight: 24 }}
-                width={24}
-                height={24}
-                color={isDark ? colors.white : colors.black}
-              />
+              <SettingIcon style={{ marginRight: 24 }} width={24} height={24} color={colors.black} />
             </TouchableOpacity>
           ),
         })}
@@ -66,7 +57,7 @@ export default function MyPageNav() {
           headerTitle: '앱 설정',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Left style={{ marginLeft: 24 }} width={24} height={24} color={isDark ? colors.white : colors.black} />
+              <Left style={{ marginLeft: 24 }} width={24} height={24} color={colors.black} />
             </TouchableOpacity>
           ),
         })}
@@ -78,7 +69,7 @@ export default function MyPageNav() {
           headerTitle: '계정 정보',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Left style={{ marginLeft: 24 }} width={24} height={24} color={isDark ? colors.white : colors.black} />
+              <Left style={{ marginLeft: 24 }} width={24} height={24} color={colors.black} />
             </TouchableOpacity>
           ),
         })}
@@ -91,7 +82,7 @@ export default function MyPageNav() {
           headerTitle: '닉네임 변경',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Left style={{ marginLeft: 24 }} width={24} height={24} color={isDark ? colors.white : colors.black} />
+              <Left style={{ marginLeft: 24 }} width={24} height={24} color={colors.black} />
             </TouchableOpacity>
           ),
         })}
@@ -103,7 +94,7 @@ export default function MyPageNav() {
           headerTitle: '비밀번호 수정',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Left style={{ marginLeft: 24 }} width={24} height={24} color={isDark ? colors.white : colors.black} />
+              <Left style={{ marginLeft: 24 }} width={24} height={24} color={colors.black} />
             </TouchableOpacity>
           ),
         })}
@@ -115,7 +106,7 @@ export default function MyPageNav() {
           headerTitle: '개인정보 처리방침',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Left style={{ marginLeft: 24 }} width={24} height={24} color={isDark ? colors.white : colors.black} />
+              <Left style={{ marginLeft: 24 }} width={24} height={24} color={colors.black} />
             </TouchableOpacity>
           ),
         })}
@@ -127,7 +118,7 @@ export default function MyPageNav() {
           headerTitle: '서비스 이용약관',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Left style={{ marginLeft: 24 }} width={24} height={24} color={isDark ? colors.white : colors.black} />
+              <Left style={{ marginLeft: 24 }} width={24} height={24} color={colors.black} />
             </TouchableOpacity>
           ),
         })}

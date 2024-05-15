@@ -33,9 +33,19 @@ const CustomSwitch = () => {
   }
 
   return (
-    <SwitchWrapper onPress={() => updatedSwitchData()}>
+    <SwitchWrapper activeOpacity={0.5} onPress={() => updatedSwitchData()}>
       <SwitchRegion isDark={isDark}>
-        <ButtonWrapper animatedValue={animatedValue} onPress={() => updatedSwitchData()}>
+        <ButtonWrapper
+          activeOpacity={0.5}
+          onPress={() => updatedSwitchData()}
+          style={{
+            transform: [
+              {
+                translateX: animatedValue,
+              },
+            ],
+          }}
+        >
           <ButtonText>{isDark ? 'ON' : 'OFF'}</ButtonText>
         </ButtonWrapper>
       </SwitchRegion>
@@ -44,9 +54,7 @@ const CustomSwitch = () => {
 }
 export default CustomSwitch
 
-const SwitchWrapper = styled.TouchableOpacity`
-  opacity: 0.5;
-`
+const SwitchWrapper = styled.TouchableOpacity``
 const SwitchRegion = styled.View`
   width: 64px;
   height: 36px;
@@ -56,17 +64,15 @@ const SwitchRegion = styled.View`
   padding: 4px;
 `
 const ButtonWrapper = styled.TouchableOpacity`
-  opacity: 0.5;
-  background-color: ${colors.grey9};
+  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.grey9 : colors.white)};
   width: 28px;
   height: 28px;
   border-radius: 25px;
   justify-content: center;
   align-items: center;
-  transform: translateX(${(props: { animatedValue: Animated.Value }) => props.animatedValue});
 `
 const ButtonText = styled.Text`
-  color: ${colors.white};
+  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
   font-size: 11px;
   font-family: SemiBold;
   line-height: 16.5px;

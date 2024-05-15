@@ -2,8 +2,6 @@ import React, { useRef, useState } from 'react'
 import { Keyboard, TextInput, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 import { colors } from '@/libs/Colors'
-import { useAtom } from 'jotai'
-import { isDarkModeAtom } from '@/states/GlobalStates'
 import ScreenLayout from '@/components/ScreenLayout'
 import TextButton from '@/components/TextButton'
 import { StackScreenProps } from '@react-navigation/stack'
@@ -12,8 +10,6 @@ import { MyPageNavParams } from '@/navigators/MyPageNav'
 type EditPWProps = StackScreenProps<MyPageNavParams, 'EditPW'>
 
 export default function EditPW({ navigation }: EditPWProps) {
-  const [isDark] = useAtom(isDarkModeAtom)
-
   const [rewrittenPW, setRewrittenPW] = useState('')
   const [newPW, setNewPW] = useState('')
   const [rewrittenNewPW, setRewrittenNewPW] = useState('')
@@ -104,16 +100,15 @@ export default function EditPW({ navigation }: EditPWProps) {
           Keyboard.dismiss()
         }}
       >
-        <Container isDark={isDark}>
+        <Container>
           <InputContainer>
             <InputRed1 error={errorPW}>
               <Input
-                isDark={isDark}
-                placeholderTextColor={isDark ? colors.grey8 : colors.grey6}
+                placeholderTextColor={colors.grey6}
                 placeholder="기존 비밀번호 확인"
                 style={{
                   fontFamily: 'Regular',
-                  color: checking ? (isDark ? colors.grey7 : colors.grey2) : isDark ? colors.white : colors.black,
+                  color: checking ? colors.grey7 : colors.black,
                 }}
                 autoFocus
                 ref={firstInputRef}
@@ -126,8 +121,7 @@ export default function EditPW({ navigation }: EditPWProps) {
             <StatusText error={errorPW}>{errorPW ? '비밀번호가 일치하지 않습니다' : ''}</StatusText>
             <InputRed2 error={errorNewPW} prevCheck={checking} contents={newPW} on={click}>
               <Input
-                isDark={isDark}
-                placeholderTextColor={isDark ? colors.grey8 : colors.grey6}
+                placeholderTextColor={colors.grey6}
                 placeholder="새 비밀번호"
                 style={{
                   fontFamily: 'Regular',
@@ -147,8 +141,7 @@ export default function EditPW({ navigation }: EditPWProps) {
               on={click}
             >
               <Input
-                isDark={isDark}
-                placeholderTextColor={isDark ? colors.grey8 : colors.grey6}
+                placeholderTextColor={colors.grey6}
                 onSubmitEditing={() => {
                   rewrittenNewPW == newPW && handlePress()
                 }}
@@ -190,14 +183,14 @@ export default function EditPW({ navigation }: EditPWProps) {
 
 const Container = styled.View`
   height: 100%;
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.grey9 : colors.white)};
+  background-color: ${colors.white};
   padding: 32px 24px 0px 24px;
 `
 const Input = styled.TextInput`
   padding: 15px 16px;
   border-radius: 10px;
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.black : colors.grey1)};
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  background-color: ${colors.grey1};
+  color: ${colors.black};
   width: 100%;
   height: 48px;
 `

@@ -6,8 +6,6 @@ import { format } from 'date-fns'
 import Left from '../../assets/images/SVGs/icon/Left.svg'
 import Right from '../../assets/images/SVGs/icon/Right.svg'
 import { useFocusEffect, useIsFocused } from '@react-navigation/native'
-import { useAtom } from 'jotai'
-import { isDarkModeAtom } from '@/states/GlobalStates'
 import { screenWidth } from '@/libs/Dimensions'
 
 interface Props {
@@ -31,7 +29,6 @@ LocaleConfig.locales['ko'] = {
 LocaleConfig.defaultLocale = 'ko'
 
 export default function CalendarView(props: Props) {
-  const [isDark] = useAtom(isDarkModeAtom)
   const [key, setKey] = useState(0)
 
   useFocusEffect(
@@ -51,23 +48,23 @@ export default function CalendarView(props: Props) {
   const [selectedDate, setSelectedDate] = useState('')
 
   const customTheme: CalendarProps['theme'] & HeaderStyleSheet = {
-    calendarBackground: isDark ? colors.grey9 : colors.white,
+    calendarBackground: colors.white,
     textDayHeaderFontFamily: 'Regular',
     textDayFontSize: 13,
     textDayFontFamily: 'Regular',
     textDayStyle: {
-      color: isDark ? colors.grey5 : colors.grey4,
+      color: colors.grey4,
     },
-    textSectionTitleColor: isDark ? colors.grey2 : colors.grey7,
+    textSectionTitleColor: colors.grey7,
     'stylesheet.calendar.header': {
       monthText: {
         fontFamily: 'SemiBold',
         fontSize: 15,
-        color: isDark ? colors.white : colors.black,
+        color: colors.black,
         margin: 24,
       },
     },
-    selectedDayTextColor: isDark ? colors.white : colors.grey9,
+    selectedDayTextColor: colors.grey9,
     selectedDayBackgroundColor: 'transparent',
   }
 
@@ -86,14 +83,14 @@ export default function CalendarView(props: Props) {
         ...exerciseDay,
         [today]: {
           selected: true,
-          selectedColor: isDark ? colors.grey7 : colors.grey2,
-          selectedTextColor: isDark ? colors.white : colors.grey9,
+          selectedColor: colors.grey2,
+          selectedTextColor: colors.grey9,
         },
         [selectedDate]: {
           ...exerciseDay[selectedDate],
           selected: true,
           selectedColor: colors.main1,
-          selectedTextColor: isDark ? colors.grey9 : colors.white,
+          selectedTextColor: colors.white,
           customStyles: {
             text: {
               fontFamily: 'SemiBold',

@@ -8,7 +8,7 @@ import Right from '../../assets/images/SVGs/icon/Right.svg'
 import Toast from 'react-native-toast-message'
 import ProfileMan from '../../assets/images/SVGs/icon/ProfileMan.svg'
 import ProfileWoman from '../../assets/images/SVGs/icon/ProfileWoman.svg'
-import { isDarkModeAtom, isLoggedInAtom } from '@/states/GlobalStates'
+import { isLoggedInAtom } from '@/states/GlobalStates'
 import { useAtom } from 'jotai'
 import ScreenLayout from '@/components/ScreenLayout'
 import { screenWidth } from '@/libs/Dimensions'
@@ -26,7 +26,6 @@ interface UserInfoData {
 
 export default function UserInfo({ route, navigation }: UserInfoProps) {
   const isFocused = useIsFocused()
-  const [isDark] = useAtom(isDarkModeAtom)
 
   useEffect(() => {
     if (route.params?.showToast) {
@@ -35,7 +34,6 @@ export default function UserInfo({ route, navigation }: UserInfoProps) {
         text1: route.params.toastMessage,
         visibilityTime: 2000,
         position: 'bottom',
-        props: { isDark: isDark },
       })
     }
   }, [route.params])
@@ -95,34 +93,33 @@ export default function UserInfo({ route, navigation }: UserInfoProps) {
 
   return (
     <ScreenLayout>
-      <Container isDark={isDark}>
+      <Container>
         <Profile>
           {getGender == 1 ? (
-            <ProfileMan width={88} height={88} color={isDark ? colors.grey7 : colors.grey2} />
+            <ProfileMan width={88} height={88} color={colors.grey2} />
           ) : (
-            <ProfileWoman width={88} height={88} color={isDark ? colors.grey7 : colors.grey2} />
+            <ProfileWoman width={88} height={88} color={colors.grey2} />
           )}
         </Profile>
         <NickBlock onPress={() => navigation.navigate('EditUserInfo')}>
-          <BlockTitle isDark={isDark}>닉네임</BlockTitle>
+          <BlockTitle>닉네임</BlockTitle>
           <NickContent>
-            <NickText isDark={isDark}>{getUserName}</NickText>
+            <NickText>{getUserName}</NickText>
             <Right style={{ marginLeft: 8 }} width={20} height={20} color={colors.grey7} />
           </NickContent>
         </NickBlock>
         <Block>
-          <BlockTitle isDark={isDark}>출생년도</BlockTitle>
-          <BlockContent isDark={isDark}>{getBirthYear}</BlockContent>
+          <BlockTitle>출생년도</BlockTitle>
+          <BlockContent>{getBirthYear}</BlockContent>
         </Block>
         <Block>
-          <BlockTitle isDark={isDark}>이메일 주소</BlockTitle>
-          <BlockContent isDark={isDark}>{getUserId}</BlockContent>
+          <BlockTitle>이메일 주소</BlockTitle>
+          <BlockContent>{getUserId}</BlockContent>
         </Block>
-        <Bar isDark={isDark} />
+        <Bar />
         <MiniBlock>
           <Click>
             <ClickText
-              isDark={isDark}
               onPress={() => {
                 navigation.navigate('EditPW')
               }}
@@ -134,7 +131,6 @@ export default function UserInfo({ route, navigation }: UserInfoProps) {
         <MiniBlock>
           <Click>
             <ClickText
-              isDark={isDark}
               onPress={() => {
                 Alert.alert(
                   '회원 탈퇴하시겠습니까?',
@@ -199,7 +195,7 @@ const Click = styled.View`
   align-items: flex-end;
 `
 const Container = styled.View`
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.grey9 : colors.white)};
+  background-color: ${colors.white};
   height: 100%;
 `
 const BlockTitle = styled.Text`
@@ -208,7 +204,7 @@ const BlockTitle = styled.Text`
   font-style: normal;
   font-family: 'Regular';
   line-height: 25.5px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
+  color: ${colors.black};
 `
 const BlockContent = styled.Text`
   width: ${screenWidth - 148}px;
@@ -217,7 +213,7 @@ const BlockContent = styled.Text`
   font-style: normal;
   font-family: 'Regular';
   line-height: 25.5px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.grey3 : colors.grey7)};
+  color: ${colors.grey7};
 `
 const ClickText = styled.Text`
   width: 80px;
@@ -227,7 +223,7 @@ const ClickText = styled.Text`
   font-family: 'Regular';
   line-height: 19.5px;
   text-decoration-line: underline;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.grey7)};
+  color: ${colors.grey7};
 `
 const ClickText2 = styled.Text`
   width: 90px;
@@ -237,7 +233,7 @@ const ClickText2 = styled.Text`
   font-family: 'SemiBold';
   line-height: 19.5px;
   text-decoration-line: underline;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.main1)};
+  color: ${colors.main1};
 `
 const NickText = styled.Text`
   text-align: right;
@@ -245,9 +241,9 @@ const NickText = styled.Text`
   font-style: normal;
   font-family: 'Regular';
   line-height: 25.5px;
-  color: ${(props: { isDark: boolean }) => (props.isDark ? colors.grey3 : colors.grey7)};
+  color: ${colors.grey7};
 `
 const Bar = styled.View`
   height: 16px;
-  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.black : colors.grey1)};
+  background-color: ${colors.grey1};
 `
