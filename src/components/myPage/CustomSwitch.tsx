@@ -4,6 +4,7 @@ import { Text, View, TouchableOpacity, Animated, Easing } from 'react-native'
 import { colors } from '@/libs/Colors'
 import { isDarkModeAtom } from '@/states/GlobalStates'
 import { useAtom } from 'jotai'
+import styled from 'styled-components/native'
 
 const CustomSwitch = () => {
   const [isDark, setIsDark] = useAtom(isDarkModeAtom)
@@ -32,47 +33,41 @@ const CustomSwitch = () => {
   }
 
   return (
-    <TouchableOpacity activeOpacity={0.5} onPress={() => updatedSwitchData()}>
-      <View
-        style={{
-          height: 36,
-          width: 64,
-          backgroundColor: isDark ? colors.main1 : colors.grey2,
-          borderRadius: 1000,
-          flexDirection: 'row',
-          padding: 4,
-        }}
-      >
-        <TouchableOpacity
-          activeOpacity={0.5}
-          onPress={() => updatedSwitchData()}
-          style={{
-            backgroundColor: isDark ? colors.grey9 : colors.white,
-            width: 28,
-            height: 28,
-            borderRadius: 25,
-            justifyContent: 'center',
-            alignItems: 'center',
-            transform: [
-              {
-                translateX: animatedValue,
-              },
-            ],
-          }}
-        >
-          <Text
-            style={{
-              color: isDark ? colors.white : colors.black,
-              fontSize: 11,
-              fontFamily: 'SemiBold',
-              lineHeight: 16.5,
-            }}
-          >
-            {isDark ? 'ON' : 'OFF'}
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </TouchableOpacity>
+    <SwitchWrapper onPress={() => updatedSwitchData()}>
+      <SwitchRegion isDark={isDark}>
+        <ButtonWrapper animatedValue={animatedValue} onPress={() => updatedSwitchData()}>
+          <ButtonText>{isDark ? 'ON' : 'OFF'}</ButtonText>
+        </ButtonWrapper>
+      </SwitchRegion>
+    </SwitchWrapper>
   )
 }
 export default CustomSwitch
+
+const SwitchWrapper = styled.TouchableOpacity`
+  opacity: 0.5;
+`
+const SwitchRegion = styled.View`
+  width: 64px;
+  height: 36px;
+  background-color: ${(props: { isDark: boolean }) => (props.isDark ? colors.main1 : colors.grey2)};
+  border-radius: 1000px;
+  flex-direction: row;
+  padding: 4px;
+`
+const ButtonWrapper = styled.TouchableOpacity`
+  opacity: 0.5;
+  background-color: ${colors.grey9};
+  width: 28px;
+  height: 28px;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(${(props: { animatedValue: Animated.Value }) => props.animatedValue});
+`
+const ButtonText = styled.Text`
+  color: ${colors.white};
+  font-size: 11px;
+  font-family: SemiBold;
+  line-height: 16.5px;
+`
