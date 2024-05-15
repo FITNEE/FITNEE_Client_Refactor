@@ -15,6 +15,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import { MyPageNavParams } from '@/navigators/MyPageNav'
 
 type SettingProps = StackScreenProps<MyPageNavParams, 'Setting'>
+
 interface UserInfoData {
   birthYear: number
   userId: string

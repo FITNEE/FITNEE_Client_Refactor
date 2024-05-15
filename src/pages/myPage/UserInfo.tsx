@@ -12,17 +12,16 @@ import { isDarkModeAtom, isLoggedInAtom } from '@/states/GlobalStates'
 import { useAtom } from 'jotai'
 import ScreenLayout from '@/components/ScreenLayout'
 import { screenWidth } from '@/libs/Dimensions'
+import { StackScreenProps } from '@react-navigation/stack'
+import { MyPageNavParams } from '@/navigators/MyPageNav'
+
+type UserInfoProps = StackScreenProps<MyPageNavParams, 'UserInfo'>
 
 interface UserInfoData {
   birthYear: number
   userId: string
   userNickname: string
   gender: number
-}
-
-type UserInfoProps = {
-  route: any
-  navigation: any
 }
 
 export default function UserInfo({ route, navigation }: UserInfoProps) {
