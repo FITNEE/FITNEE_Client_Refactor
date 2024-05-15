@@ -8,6 +8,7 @@ import Right from '../../assets/images/SVGs/icon/Right.svg'
 import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { useAtom } from 'jotai'
 import { isDarkModeAtom } from '@/states/GlobalStates'
+import { screenWidth } from '@/libs/Dimensions'
 
 interface Props {
   dayFunction: (text: { dateString: string }) => void
@@ -32,7 +33,6 @@ LocaleConfig.defaultLocale = 'ko'
 export default function CalendarView(props: Props) {
   const [isDark] = useAtom(isDarkModeAtom)
   const [key, setKey] = useState(0)
-  const windowWidth = Dimensions.get('window').width
 
   useFocusEffect(
     useCallback(() => {
@@ -77,9 +77,9 @@ export default function CalendarView(props: Props) {
       monthFormat="yyyy. MM"
       renderArrow={direction => {
         if (direction == 'left')
-          return <Left style={{ marginLeft: windowWidth / 4 - 30 }} width={20} height={20} color={colors.grey5} />
+          return <Left style={{ marginLeft: screenWidth / 4 - 30 }} width={20} height={20} color={colors.grey5} />
         if (direction == 'right')
-          return <Right style={{ marginRight: windowWidth / 4 - 21 }} width={20} height={20} color={colors.grey5} />
+          return <Right style={{ marginRight: screenWidth / 4 - 21 }} width={20} height={20} color={colors.grey5} />
       }}
       onMonthChange={month => props.setMonth(month.month)}
       markedDates={{

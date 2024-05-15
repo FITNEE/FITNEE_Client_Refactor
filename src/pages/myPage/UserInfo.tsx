@@ -11,6 +11,7 @@ import ProfileWoman from '../../assets/images/SVGs/icon/ProfileWoman.svg'
 import { isDarkModeAtom, isLoggedInAtom } from '@/states/GlobalStates'
 import { useAtom } from 'jotai'
 import ScreenLayout from '@/components/ScreenLayout'
+import { screenWidth } from '@/libs/Dimensions'
 
 interface UserInfoData {
   birthYear: number
@@ -23,8 +24,6 @@ type UserInfoProps = {
   route: any
   navigation: any
 }
-
-const ScreenWidth = Dimensions.get('screen').width
 
 export default function UserInfo({ route, navigation }: UserInfoProps) {
   const isFocused = useIsFocused()
@@ -163,11 +162,11 @@ export default function UserInfo({ route, navigation }: UserInfoProps) {
             </ClickText>
           </Click>
         </MiniBlock>
-        <MiniBlock>
+        {/* <MiniBlock>
           <Click>
             <ClickText2 onPress={() => navigation.navigate('InAppPurchase')}>피트니 응원하기</ClickText2>
           </Click>
-        </MiniBlock>
+        </MiniBlock> */}
       </Container>
     </ScreenLayout>
   )
@@ -187,7 +186,7 @@ const NickBlock = styled.TouchableOpacity`
   padding: 15px 24px;
 `
 const NickContent = styled.View`
-  width: ${ScreenWidth - 148}px;
+  width: ${screenWidth - 148}px;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
@@ -213,7 +212,7 @@ const BlockTitle = styled.Text`
   color: ${(props: { isDark: boolean }) => (props.isDark ? colors.white : colors.black)};
 `
 const BlockContent = styled.Text`
-  width: ${ScreenWidth - 148}px;
+  width: ${screenWidth - 148}px;
   text-align: right;
   font-size: 17px;
   font-style: normal;
