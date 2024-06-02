@@ -1,7 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import ExerciseMain from '@/pages/Exercise/ExerciseMain'
-import StartExercise from '@/pages/Exercise/StartExercise'
-import ExerciseCourse from '@/pages/Exercise/ExerciseCourse'
+import Home from '@/pages/home/Home'
+import ExerciseMain from '@/pages/exercise/ExerciseMain'
+import StartExercise from '@/pages/exercise/StartExercise'
+import ExerciseCourse from '@/pages/exercise/ExerciseCourse'
 
 const Stack = createStackNavigator()
 
