@@ -1,4 +1,4 @@
-import ProgressBar from '@/components/CreateRoutine/ProgressBar'
+import ProgressBar from '@/components/createRoutine/ProgressBar'
 import { isDarkModeAtom, isTabVisibleAtom } from '@/states/GlobalStates'
 import { useIsFocused, useNavigation } from '@react-navigation/native'
 import { useAtom, useSetAtom } from 'jotai'
@@ -8,10 +8,10 @@ import LeftArrow from '@/assets/images/SVGs/icon/LeftArrow.svg'
 import styled from 'styled-components/native'
 import { colors } from '@/libs/Colors'
 import { NavigationProps } from '../home/EmptyRoutine'
-import CreateRoutine1 from '@/components/CreateRoutine/CreateRoutine1'
-import CreateRoutine2 from '@/components/CreateRoutine/CreateRoutine2'
-import CreateRoutine3 from '@/components/CreateRoutine/CreateRoutine3'
-import CreateRoutine4 from '@/components/CreateRoutine/CreateRoutine4'
+import CreateRoutine1 from '@/components/createRoutine/CreateRoutine1'
+import CreateRoutine2 from '@/components/createRoutine/CreateRoutine2'
+import CreateRoutine3 from '@/components/createRoutine/CreateRoutine3'
+import CreateRoutine4 from '@/components/createRoutine/CreateRoutine4'
 
 export interface ActiveProps {
   isDark: boolean

@@ -5,7 +5,7 @@ import { useAtom } from 'jotai'
 import { isDarkModeAtom } from '@/states/GlobalStates'
 import { useNavigation } from '@react-navigation/native'
 import { NavigationProps } from '@/pages/home/EmptyRoutine'
-import { ActiveProps } from '@/pages/CreateRoutine/CreateRoutine'
+import { ActiveProps } from '@/pages/createRoutine/CreateRoutine'
 import ScreenLayout from '@/components/home/ScreenLayout'
 
 export default function Error() {

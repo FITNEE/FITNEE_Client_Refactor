@@ -5,9 +5,9 @@ import { useAtom } from 'jotai'
 import { isDarkModeAtom } from '@/states/GlobalStates'
 import { useNavigation } from '@react-navigation/native'
 import { NavigationProps } from '@/pages/home/EmptyRoutine'
-import { ActiveProps } from '@/pages/CreateRoutine/CreateRoutine'
+import { ActiveProps } from '@/pages/createRoutine/CreateRoutine'
 import ScreenLayout from '@/components/home/ScreenLayout'
-import RoutineResult from '@/components/CreateRoutine/RoutineResult'
+import RoutineResult from '@/components/createRoutine/RoutineResult'
 
 export default function Result() {
   const [isDark] = useAtom(isDarkModeAtom)

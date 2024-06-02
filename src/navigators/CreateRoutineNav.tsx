@@ -1,10 +1,10 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import CreateRoutine from '@/pages/CreateRoutine/CreateRoutine'
+import CreateRoutine from '@/pages/createRoutine/CreateRoutine'
 import HomeNav from './HomeNav'
-import Loading from '@/pages/CreateRoutine/Loading'
-import Result from '@/pages/CreateRoutine/Result'
-import Error from '@/pages/CreateRoutine/Error'
+import Loading from '@/pages/createRoutine/Loading'
+import Result from '@/pages/createRoutine/Result'
+import Error from '@/pages/createRoutine/Error'
 
 const Stack = createStackNavigator()
 
