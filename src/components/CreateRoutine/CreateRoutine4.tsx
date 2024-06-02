@@ -138,8 +138,9 @@ const DayWrapper = styled.View`
 `
 const DayContainer = styled.View`
   flex-direction: row;
-  width: 327px;
+  width: 100%;
   height: 43px;
+  margin: 0 24px;
   align-items: center;
   justify-content: center;
   justify-content: space-around;

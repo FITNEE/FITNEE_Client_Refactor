@@ -12,6 +12,7 @@ export default function CreateRoutineNav() {
   return (
     <Stack.Navigator
       screenOptions={{
+        headerShown: false,
         headerTitleAlign: 'center',
         headerBackTitleVisible: false,
         headerTitleStyle: {
@@ -22,41 +23,11 @@ export default function CreateRoutineNav() {
         gestureEnabled: false,
       }}
     >
-      <Stack.Screen
-        name="CreateRoutine"
-        options={{
-          headerShown: false,
-        }}
-        component={CreateRoutine}
-      />
-      <Stack.Screen
-        name="Loading"
-        options={{
-          headerShown: false,
-        }}
-        component={Loading}
-      />
-      <Stack.Screen
-        name="Result"
-        options={{
-          headerShown: false,
-        }}
-        component={Result}
-      />
-      <Stack.Screen
-        name="Error"
-        options={{
-          headerShown: false,
-        }}
-        component={Error}
-      />
-      <Stack.Screen
-        name="Home"
-        options={{
-          headerShown: false,
-        }}
-        component={HomeNav}
-      />
+      <Stack.Screen name="CreateRoutine" component={CreateRoutine} />
+      <Stack.Screen name="Loading" component={Loading} />
+      <Stack.Screen name="Result" component={Result} />
+      <Stack.Screen name="Error" component={Error} />
+      <Stack.Screen name="Home" component={HomeNav} />
     </Stack.Navigator>
   )
 }

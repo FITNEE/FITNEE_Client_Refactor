@@ -52,7 +52,7 @@ export default function WheelPicker() {
           }}
           selectedValue="40"
           pickerData={data}
-          onValueChange={(value: any) => {
+          onValueChange={(value: number) => {
             setValue(value)
           }}
         />
