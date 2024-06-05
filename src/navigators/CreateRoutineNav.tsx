@@ -1,49 +1,33 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import CreateRoutine_1 from "@/pages/CreateRoutine/CreateRoutine_1";
-import CreateRoutine_2 from "@/pages/CreateRoutine/CreateRoutine_2";
-import CreateRoutine_3 from "@/pages/CreateRoutine/CreateRoutine_3";
-import CreateRoutine_4 from "@/pages/CreateRoutine/CreateRoutine_4";
-import CreateRoutine_5 from "@/pages/CreateRoutine/CreateRoutine_5";
-import HomeNav from "./HomeNav";
+import React from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
+import CreateRoutine from '@/pages/createRoutine/CreateRoutine'
+import HomeNav from './HomeNav'
+import Loading from '@/pages/createRoutine/Loading'
+import Result from '@/pages/createRoutine/Result'
+import Error from '@/pages/createRoutine/Error'
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
 export default function CreateRoutineNav() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTitleAlign: "center",
+        headerShown: false,
+        headerTitleAlign: 'center',
         headerBackTitleVisible: false,
         headerTitleStyle: {
-          fontWeight: "bold",
+          fontWeight: 'bold',
           fontSize: 16,
         },
         animationEnabled: false,
+        gestureEnabled: false,
       }}
     >
-      <Stack.Screen
-        name="CreateRoutine_1"
-        options={{
-          headerShown: false,
-        }}
-        component={CreateRoutine_1}
-      />
-      <Stack.Screen name="CreateRoutine_2" component={CreateRoutine_2} />
-      <Stack.Screen name="CreateRoutine_3" component={CreateRoutine_3} />
-      <Stack.Screen name="CreateRoutine_4" component={CreateRoutine_4} />
-      <Stack.Screen
-        name="CreateRoutine_5"
-        options={{ headerShown: false }}
-        component={CreateRoutine_5}
-      />
-      <Stack.Screen
-        name="Home"
-        options={{
-          headerShown: false,
-        }}
-        component={HomeNav}
-      />
+      <Stack.Screen name="CreateRoutine" component={CreateRoutine} />
+      <Stack.Screen name="Loading" component={Loading} />
+      <Stack.Screen name="Result" component={Result} />
+      <Stack.Screen name="Error" component={Error} />
+      <Stack.Screen name="Home" component={HomeNav} />
     </Stack.Navigator>
-  );
+  )
 }
