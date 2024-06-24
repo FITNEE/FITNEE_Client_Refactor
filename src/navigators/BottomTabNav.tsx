@@ -47,14 +47,8 @@ export default function BottomTabNav() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabWrapper>
-              <HomeTabIcon
-                color={focused ? colors.main1 : colors.grey5}
-                width={24}
-                height={24}
-              />
-              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>
-                홈
-              </TabText>
+              <HomeTabIcon color={focused ? colors.main1 : colors.grey5} width={24} height={24} />
+              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>홈</TabText>
             </TabWrapper>
           ),
         }}
@@ -65,14 +59,8 @@ export default function BottomTabNav() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabWrapper>
-              <MyRoutineTabIcon
-                color={focused ? colors.main1 : colors.grey5}
-                width={24}
-                height={24}
-              />
-              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>
-                마이루틴
-              </TabText>
+              <MyRoutineTabIcon color={focused ? colors.main1 : colors.grey5} width={24} height={24} />
+              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>마이루틴</TabText>
             </TabWrapper>
           ),
         }}
@@ -83,14 +71,8 @@ export default function BottomTabNav() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabWrapper>
-              <ExerciseTabIcon
-                color={focused ? colors.main1 : colors.grey5}
-                width={24}
-                height={24}
-              />
-              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>
-                운동하기
-              </TabText>
+              <ExerciseTabIcon color={focused ? colors.main1 : colors.grey5} width={24} height={24} />
+              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>운동하기</TabText>
             </TabWrapper>
           ),
         }}
@@ -101,14 +83,8 @@ export default function BottomTabNav() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabWrapper>
-              <DictionaryTabIcon
-                color={focused ? colors.main1 : colors.grey5}
-                width={24}
-                height={24}
-              />
-              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>
-                운동사전
-              </TabText>
+              <DictionaryTabIcon color={focused ? colors.main1 : colors.grey5} width={24} height={24} />
+              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>운동사전</TabText>
             </TabWrapper>
           ),
         }}
@@ -119,14 +95,8 @@ export default function BottomTabNav() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabWrapper>
-              <MyPageTabIcon
-                color={focused ? colors.main1 : colors.grey5}
-                width={24}
-                height={24}
-              />
-              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>
-                MY
-              </TabText>
+              <MyPageTabIcon color={focused ? colors.main1 : colors.grey5} width={24} height={24} />
+              <TabText style={{ color: focused ? colors.main1 : colors.grey7 }}>MY</TabText>
             </TabWrapper>
           ),
         }}

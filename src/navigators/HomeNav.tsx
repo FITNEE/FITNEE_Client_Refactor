@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import Home from '@/pages/Home/Home'
+import Home from '@/pages/home/Home'
 import { isTabVisibleAtom } from '@/states/GlobalStates'
 import { useAtom } from 'jotai'
 
